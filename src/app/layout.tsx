@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
-import { Heebo, Frank_Ruhl_Libre } from "next/font/google";
+import { Heebo } from "next/font/google";
 import "./globals.css";
 
 const heebo = Heebo({
   variable: "--font-heebo",
   subsets: ["hebrew", "latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const frankRuhl = Frank_Ruhl_Libre({
-  variable: "--font-frank",
-  subsets: ["hebrew", "latin"],
-  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -44,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl">
       <body
-        className={`${heebo.variable} ${frankRuhl.variable} antialiased`}
+        className={`${heebo.variable} antialiased`}
       >
         {children}
       </body>

@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAFAF8;
+  --background: #FFFFFF;
   --foreground: #1a1a1a;
-  --blue-deep: #003DA5;
-  --blue-mid: #1A5BC4;
-  --blue-light: #E8F0FE;
-  --orange-warm: #E8700A;
-  --orange-light: #FFF3E8;
-  --cream: #F5F0E8;
-  --cream-dark: #E8E0D0;
-  --slate: #4A5568;
-  --slate-light: #94A3B8;
+  --blue-deep: #1a3a5c;
+  --blue-mid: #2563EB;
+  --blue-light: #EFF6FF;
+  --orange-warm: #2563EB;
+  --orange-light: #EFF6FF;
+  --cream: #F8F9FA;
+  --cream-dark: #E5E7EB;
+  --slate: #6b7280;
+  --slate-light: #9ca3af;
 }
 
 @theme inline {
@@ -27,7 +27,7 @@
   --color-slate: var(--slate);
   --color-slate-light: var(--slate-light);
   --font-sans: var(--font-heebo);
-  --font-display: var(--font-frank);
+  --font-display: var(--font-heebo);
 }
 
 body {
@@ -43,7 +43,7 @@ html {
 
 /* Custom selection color */
 ::selection {
-  background: var(--blue-deep);
+  background: var(--blue-mid);
   color: white;
 }
 
@@ -193,7 +193,7 @@ html {
 
 /* Gradient text utility */
 .text-gradient {
-  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 50%, var(--orange-warm) 100%);
+  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
