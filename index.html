@@ -255,7 +255,186 @@
     footer a:hover { color: #fff; }
     .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 10px; }
 
+    /* ── Blog cards ── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .blog-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26,58,92,0.12);
+      text-decoration: none;
+    }
+    .blog-card-img {
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    .blog-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .blog-card-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+    .blog-card-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .blog-card-tag {
+      display: inline-block;
+      background: var(--blue-lt);
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+      width: fit-content;
+    }
+    .blog-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--brand);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .blog-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .blog-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .blog-card-read {
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* ── Contact form ── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .contact-info h2 { margin-bottom: 12px; }
+    .contact-info p { margin-bottom: 0; }
+    .contact-info-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .contact-link-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .contact-link-item:hover { color: var(--blue); text-decoration: none; }
+    .contact-link-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group:last-of-type { margin-bottom: 20px; }
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .form-group input,
+    .form-group textarea {
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.95rem;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      direction: rtl;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .form-group textarea { min-height: 110px; }
+    .form-success {
+      display: none;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      color: #166534;
+      font-weight: 600;
+    }
+
     /* ── Responsive ── */
+    @media (max-width: 700px) {
+      .contact-wrap { grid-template-columns: 1fr; gap: 28px; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 600px) {
       section { padding: 48px 0; }
       #hero { padding: 60px 0 52px; }
@@ -279,6 +458,11 @@
     <p class="subtitle">
       פרומפט חכם שהופך כל מודל שפה מתקדם למאמן קריירה אישי. חינם.
     </p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom: 8px;">
+      <a href="#blog" style="font-size:0.85rem; color:var(--muted);">מאמרים</a>
+      <span style="color:var(--border);">|</span>
+      <a href="#contact" style="font-size:0.85rem; color:var(--muted);">צרו קשר</a>
+    </div>
     <a href="#prompt-section" class="btn btn-primary">
       העתיקו את הפרומפט והתחילו
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1)"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -556,7 +740,119 @@ https://wa.me/31644295691
 
 
 <!-- ══════════════════════════════════
-     7. FOOTER
+     7. BLOG
+══════════════════════════════════ -->
+<section id="blog">
+  <div class="container">
+    <h2>מאמרים ותובנות</h2>
+    <p>מחשבות מהשטח על שוק העבודה ההולנדי, אסטרטגיות חיפוש וקריירה.</p>
+
+    <div class="blog-grid">
+
+      <!-- Post 1 -->
+      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #0f2544 0%, #1a3a5c 50%, #2563EB 100%);">
+            🏹
+          </div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">אסטרטגיית חיפוש</span>
+          <h3>הדרך הכי טובה למצוא היום עבודה היא להפסיק לחפש עבודה</h3>
+          <p>אחרי שמונה שנים שבמהלכן שוחחתי עם מאות ישראלים — אני יכול לומר בביטחון: מערכת ההפעלה שכולנו רגילים אליה קרסה לחלוטין.</p>
+          <div class="blog-card-footer">
+            <span>פברואר 2025</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Post 2 -->
+      <a class="blog-card" href="https://www.facebook.com/share/v/1P2XUkeHFx/" target="_blank" rel="noopener">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
+            🧓
+          </div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">גיל ושוק העבודה</span>
+          <h3>אייג׳יזם בהייטק — ולמה הוא הולך להשתנות</h3>
+          <p>אחת התופעות המכוערות בעולם התעסוקה. בעולם שבו כל המידע נגיש לכולם — הניסיון, האינטואיציה והיושרה הופכים ל-Unfair advantage.</p>
+          <div class="blog-card-footer">
+            <span>אוקטובר 2025</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     8. CONTACT
+══════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+
+      <!-- Left: info -->
+      <div class="contact-info">
+        <h2>צרו קשר</h2>
+        <p>
+          שאלה, רעיון, או סתם רוצים להתייעץ? אשמח לשמוע.
+          בדרך כלל עונה תוך יום עסקים.
+        </p>
+        <div class="contact-info-links">
+          <a class="contact-link-item" href="https://wa.me/31644295691" target="_blank" rel="noopener">
+            <div class="contact-link-icon" style="background:#f0fdf4;">💬</div>
+            <span>וואטסאפ — עדיף לתגובה מהירה</span>
+          </a>
+          <a class="contact-link-item" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
+            <div class="contact-link-icon" style="background:#eff6ff;">👥</div>
+            <span>קהילת מוצאים עבודה בהולנד</span>
+          </a>
+          <a class="contact-link-item" href="https://israelis.nl" target="_blank" rel="noopener">
+            <div class="contact-link-icon" style="background:#f0f6ff;">🌐</div>
+            <span>israelis.nl</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="form-card">
+        <!-- ⚠️ החליפו YOUR_FORM_ID ב-ID מ-formspree.io -->
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="name">שם מלא</label>
+            <input type="text" id="name" name="name" placeholder="ישראל ישראלי" required />
+          </div>
+          <div class="form-group">
+            <label for="email">אימייל</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" dir="ltr" required />
+          </div>
+          <div class="form-group">
+            <label for="message">הודעה</label>
+            <textarea id="message" name="message" placeholder="שלום אלון, אני רוצה..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+            שלחו הודעה
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          ✅ ההודעה נשלחה! אחזור אליכם בהקדם.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     9. FOOTER
 ══════════════════════════════════ -->
 <footer>
   <div class="container">
@@ -599,6 +895,33 @@ https://wa.me/31644295691
         alert('לא הצלחנו להעתיק. סמנו את הטקסט ידנית.');
       }
       document.body.removeChild(ta);
+    }
+  }
+
+  // Contact form submit
+  async function handleFormSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const btn  = form.querySelector('button[type="submit"]');
+    const orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'שולח...';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.disabled = false;
+      btn.innerHTML = orig;
+      alert('שגיאה בשליחה. אפשר לפנות אלי ישירות בוואטסאפ.');
     }
   }
 
