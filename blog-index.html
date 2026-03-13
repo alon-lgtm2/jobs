@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מאמרים ותובנות | israelis.nl</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #FFFFFF; --gray-bg: #F8F9FA; --brand: #1a3a5c; --blue: #2563EB;
+  --blue-lt: #EFF6FF; --text: #1a1a1a; --muted: #6b7280; --border: #E5E7EB;
+  --radius: 12px; --max: 900px; --cream: #FFFFFF; --brown: #1a3a5c;
+  --brown-mid: #6b7280; --line: #E5E7EB;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Heebo', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+/* Navbar */
+.navbar { position: sticky; top: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); z-index: 1000; padding: 0 20px; }
+.navbar .container { display: flex; align-items: center; justify-content: space-between; height: 62px; max-width: var(--max); }
+.navbar .logo { font-size: 1.15rem; font-weight: 800; color: var(--brown); text-decoration: none; letter-spacing: -0.5px; }
+.navbar nav { display: flex; align-items: center; gap: 28px; }
+.navbar nav a { text-decoration: none; font-size: 0.92rem; font-weight: 500; color: var(--brown-mid); transition: color 0.2s; }
+.navbar nav a:hover { color: var(--brown); }
+.navbar .cta-btn { background: var(--blue); color: #fff !important; padding: 9px 22px; border-radius: 8px; font-weight: 600; font-size: 0.92rem; transition: background 0.2s; }
+.navbar .cta-btn:hover { background: #1d4ed8; }
+.hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2.5px; background: var(--brown); border-radius: 2px; transition: 0.3s; }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .navbar nav { display: none; position: absolute; top: 62px; right: 0; left: 0; background: #fff; flex-direction: column; padding: 20px; gap: 16px; border-bottom: 1px solid var(--line); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .navbar nav.active { display: flex; }
+}
+
+/* Page header */
+.page-header { background: var(--gray-bg); padding: 56px 20px 48px; text-align: center; }
+.page-header h1 { font-size: 2rem; font-weight: 800; color: var(--brown); margin-bottom: 10px; }
+.page-header p { font-size: 1.05rem; color: var(--brown-mid); max-width: 560px; margin: 0 auto; }
+
+/* Blog grid */
+.blog-section { padding: 48px 20px 64px; }
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.blog-card { display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,58,92,0.12); }
+.blog-card-img { height: 180px; overflow: hidden; }
+.blog-card-img-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.blog-card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.blog-card-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; color: var(--blue); background: var(--blue-lt); padding: 4px 10px; border-radius: 20px; margin-bottom: 8px; width: fit-content; }
+.blog-card-body h3 { font-size: 1.05rem; font-weight: 700; color: var(--brown); line-height: 1.5; margin-bottom: 8px; }
+.blog-card-body p { font-size: 0.88rem; color: var(--brown-mid); line-height: 1.65; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.blog-card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 0.8rem; color: var(--brown-mid); }
+.blog-card-read { color: var(--blue); font-weight: 600; }
+
+/* Footer */
+footer { background: var(--gray-bg); border-top: 1px solid var(--line); padding: 32px 20px; text-align: center; font-size: 0.9rem; color: var(--brown-mid); }
+footer a { color: var(--brown); text-decoration: none; font-weight: 500; }
+footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="container">
+    <a href="/" class="logo">israelis.nl jobs</a>
+    <button class="hamburger" aria-label="תפריט" onclick="document.querySelector('.navbar nav').classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav>
+      <a href="/prompts">פרומפטים</a>
+      <a href="/#services">ליווי אישי</a>
+      <a href="/blog" style="color:var(--brown); font-weight:600;">מאמרים</a>
+      <a href="/#contact">צרו קשר</a>
+      <a href="/prompts/cv-upgrade#prompt-section" class="cta-btn">התחילו עכשיו</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Page Header -->
+<section class="page-header">
+  <div class="container">
+    <h1>מאמרים ותובנות</h1>
+    <p>מחשבות מהשטח על שוק העבודה ההולנדי, אסטרטגיות חיפוש וקריירה.</p>
+  </div>
+</section>
+
+<!-- Blog Grid -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-grid">
+
+      <a class="blog-card" href="/blog/job-search-strategy">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #0f2544 0%, #1a3a5c 50%, #2563EB 100%);">🏹</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">אסטרטגיית חיפוש</span>
+          <h3>הדרך הכי טובה למצוא היום עבודה היא להפסיק לחפש עבודה</h3>
+          <p>אחרי שמונה שנים שבמהלכן שוחחתי עם מאות ישראלים — אני יכול לומר בביטחון: מערכת ההפעלה שכולנו רגילים אליה קרסה לחלוטין.</p>
+          <div class="blog-card-footer">
+            <span>פברואר 2025</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/ageism-in-tech">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">🧓</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">גיל ושוק העבודה</span>
+          <h3>אייג׳יזם בהייטק — ולמה הוא הולך להשתנות</h3>
+          <p>אחת התופעות המכוערות בעולם התעסוקה. בעולם שבו כל המידע נגיש לכולם — הניסיון, האינטואיציה והיושרה הופכים ל-Unfair advantage.</p>
+          <div class="blog-card-footer">
+            <span>אוקטובר 2025</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/salary-negotiation">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #059669 100%);">💰</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">משא ומתן על שכר</span>
+          <h3>מה לענות כששואלים אותך על ציפיות שכר?</h3>
+          <p>התשובה שלי תמיד ברורה וחדה — שאלו בחזרה, בלי להתבלבל ובלי להתנצל: "כמה אתם משלמים?" טקטיקה שהוכיחה את עצמה שוב ושוב, גם בהולנד.</p>
+          <div class="blog-card-footer">
+            <span>אוקטובר 2025</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/dba-law-freelancers">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #4a1942 0%, #6b21a8 50%, #7c3aed 100%);">🧾</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">פרילנסרים / ZZP</span>
+          <h3>מוציאים חשבוניות? חשוב להכיר את חוק ה-DBA</h3>
+          <p>אם אתם עובדים כפרילנסרים מול לקוח, או מעסיקים עצמאיים בעצמכם — החוק החדש שעומד להיכנס לתוקף עלול לשנות הכל. מה צריך לדעת כבר עכשיו.</p>
+          <div class="blog-card-footer">
+            <span>נובמבר 2024</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/financial-planning">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 50%, #ef4444 100%);">🚗</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">תכנון פיננסי</span>
+          <h3>98 אלף יורו שנתי — ולמה זה לא מספיק</h3>
+          <p>שיחה אמיתית עם מי שתכנן טסלה, בית פרטי, גן ילדים וזיגו. התוצאה? בור חודשי של 3,000 יורו. לפני שאתם קופצים — תחשבו פעמיים.</p>
+          <div class="blog-card-footer">
+            <span>מאי 2023</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/referrals">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #312e81 0%, #4338ca 50%, #6366f1 100%);">🤝</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">גיוס ורפרלים</span>
+          <h3>מישהו פה מאדיין? — על בקשות רפרל וכמה הן שוות</h3>
+          <p>כולם מכירים את הבקשות — "צריך שימליצו עליי דחוף". אבל כמה זה אתי, כמה זה אפקטיבי, ומה המועמד בעצם מפספס?</p>
+          <div class="blog-card-footer">
+            <span>אוגוסט 2025</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/thirty-percent-ruling">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #78350f 0%, #d97706 50%, #fbbf24 100%);">💶</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">מיסוי / 30% רולינג</span>
+          <h3>אזהרה: יש מצב שמבטלים את הרולינג</h3>
+          <p>הפרלמנט ההולנדי שוקל ביטול מוחלט של הטבת ה-30% לכיסוי גירעון תקציבי. מה זה אומר על שוק העבודה ועל המשכורות בהייטק?</p>
+          <div class="blog-card-footer">
+            <span>אפריל 2022</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/military-service-cv">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #4ade80 100%);">🪖</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">קורות חיים</span>
+          <h3>שירות צבאי בקורות החיים — כן או לא?</h3>
+          <p>שאלה נצחית בכל קבוצה. הזווית שלי: תהליך המיון הוא הזדמנות לסנן מעסיקים, לא רק ההפך. ציון השירות יכול להוות כלי סינון מצוין לשני הצדדים.</p>
+          <div class="blog-card-footer">
+            <span>קורות חיים ואסטרטגיה</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/fintech-networking">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #38bdf8 100%);">🏦</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">נטוורקינג / פינטק</span>
+          <h3>Money20/20 אמסטרדם — ארוחת בוקר עם יזמי פינטק ישראליים</h3>
+          <p>בשולי הכנס הגדול, הנספחות הכלכלית בשגרירות ישראל בהאג מארגנת מפגש נטוורקינג עם השמות החמים בפינטק הישראלי. מגיעים סקרנים ורעבים.</p>
+          <div class="blog-card-footer">
+            <span>מאי 2025</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/seder-map">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #1e1b4b 0%, #1e3a5f 50%, #d97706 100%);">🗺️</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">פרויקטים / חגים</span>
+          <h3>הגדה על המפה — יציאת מצרים על תצלום לוויין אמיתי</h3>
+          <p>סטארטאפ שלא מגייס ולא רוצה כסף — רק נותן. הגדה של פסח עם ציר זמן ומקורות היסטוריים, מוכנה להדפסה חינם. מתאים לגילאי 5 עד 105.</p>
+          <div class="blog-card-footer">
+            <span>אפריל 2025</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/motivation-ant-cricket">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #14532d 0%, #15803d 50%, #4ade80 100%);">🐜</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">מוטיבציה בחיפוש עבודה</span>
+          <h3>הציעתי עזרה — כמה אחוז מבקשי הסיוע באמת ענו?</h3>
+          <p>הציעו עזרה, קיבלו המון פניות, שלחו שלוש שאלות פשוטות. הנמלה והצרצר חיים גם בקהילה שלנו — ואחוז המשיבים יפתיע אתכם.</p>
+          <div class="blog-card-footer">
+            <span>אוגוסט 2023</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/job-market-stats">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #6b7280 100%);">📊</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">שוק העבודה / טיפים</span>
+          <h3>133 משרות על כל 100 מחפשי עבודה — ולמה עדיין קשה למצוא?</h3>
+          <p>הלמ"ס ההולנדי קבע: יש יותר משרות ממחפשי עבודה. אז מה הקאץ'? 4 בעיות נפוצות ו-4 פתרונות מעשיים לישראלים שחולמים על רילוקיישן להולנד.</p>
+          <div class="blog-card-footer">
+            <span>ספטמבר 2022</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/rejection-to-opportunity">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 50%, #f87171 100%);">🪟</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">השראה / חיפוש עבודה</span>
+          <h3>קיבלה דחייה — וכתבה בחזרה. מה קרה אחר כך?</h3>
+          <p>קיבלה מכתב דחייה על משרה אטרקטיבית, וזיהתה צורך אחר לחלוטין אצל המעסיק. כתבה, הציעה — וקיבלה הזמנה לפגישה. ככה נכנסים מהחלון.</p>
+          <div class="blog-card-footer">
+            <span>יוני 2024</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/relocation-tips">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #ae2012 0%, #ca6702 50%, #ee9b00 100%);">🇳🇱</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">רילוקיישן / עצות</span>
+          <h3>רילוקיישן להולנד — 10 טיפים לפני שעוברים</h3>
+          <p>ארבע שנים בהולנד, מאות שיחות ייעוץ, ו-10 טיפים שלא תמצאו בשום מדריך גנרי. מ-LinkedIn ו-30% רולינג ועד ניתוק תושבות ושכירת דירה מרחוק.</p>
+          <div class="blog-card-footer">
+            <span>אוגוסט 2022</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/visa-permanent-residency">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #78350f 0%, #b45309 50%, #f59e0b 100%);">🛂</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">ויזה / תושבות קבע</span>
+          <h3>גרת בהולנד 3 שנים? תבדוק שהויזה שלך לא מאפסת את הספירה</h3>
+          <p>סיפורו של דני — איש תוכנה בכיר שגילה שחודש וחצי של חופש בין עבודות אפס את 3.5 שנות הספירה לתושבות קבע. מה שכל Highly Skilled Migrant חייב לדעת.</p>
+          <div class="blog-card-footer">
+            <span>ויזה ורילוקיישן</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/blog/cv-strategy">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #0d1b2a 0%, #1b3a5c 50%, #2563EB 100%);">🍾</div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">קורות חיים / אסטרטגיה</span>
+          <h3>תבנו את הקו"ח הכי טובים שיש. ואז — אל תשלחו אותם לשום מקום</h3>
+          <p>Spray &amp; Pray לא רק שאינה אפקטיבית — היא עלולה לחסום אתכם לגמרי. מה באמת עובד, ומה צריך להיות בקורות חיים שיחכו במגירה לרגע הנכון.</p>
+          <div class="blog-card-footer">
+            <span>מרץ 2026</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer><div class="container"><p><a href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">🇮🇱 הקהילה שלנו בפייסבוק</a>&nbsp;·&nbsp;<a href="https://israelis.nl" target="_blank" rel="noopener">israelis.nl</a></p></div></footer>
+
+</body>
+</html>

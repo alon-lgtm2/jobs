@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ספריית פרומפטים | israelis.nl</title>
+  <meta name="description" content="כלים חכמים מבוססי AI שיעזרו לכם בכל שלב בחיפוש העבודה בהולנד." />
+  <meta property="og:title" content="ספריית פרומפטים | israelis.nl" />
+  <meta property="og:description" content="כלים חכמים מבוססי AI שיעזרו לכם בכל שלב בחיפוש העבודה בהולנד." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:    #FFFFFF;
+      --gray-bg:  #F8F9FA;
+      --brand:    #1a3a5c;
+      --blue:     #2563EB;
+      --blue-lt:  #EFF6FF;
+      --text:     #1a1a1a;
+      --muted:    #6b7280;
+      --border:   #E5E7EB;
+      --radius:   12px;
+      --max:      800px;
+      --cream:    #FFFFFF;
+      --sand:     #F8F9FA;
+      --terra:    #2563EB;
+      --terra-lt: #93bbfd;
+      --terra-bg: rgba(37,99,235,0.06);
+      --peach:    #EFF6FF;
+      --brown:    #1a3a5c;
+      --brown-mid:#6b7280;
+      --brown-lt: #9ca3af;
+      --line:     #E5E7EB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Heebo', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Typography ── */
+    h1 {
+      font-family: 'Heebo', system-ui, sans-serif;
+      font-size: clamp(1.9rem, 5vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--brand);
+    }
+    h2 {
+      font-family: 'Heebo', system-ui, sans-serif;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-family: 'Heebo', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    p  { color: var(--brown-mid); margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    a  { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Top Nav ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .site-nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      gap: 16px;
+    }
+    .site-nav-logo {
+      font-family: 'Heebo', system-ui, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brown);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .site-nav-logo:hover { text-decoration: none; color: var(--blue); }
+    .site-nav-logo span { color: var(--blue); }
+    .site-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+    .site-nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 99px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .site-nav-links a:hover {
+      color: var(--brown);
+      background: var(--terra-bg);
+      text-decoration: none;
+    }
+    .site-nav-cta {
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: #fff !important;
+      background: var(--blue) !important;
+      padding: 8px 18px !important;
+    }
+    .site-nav-cta:hover {
+      background: #1d4fd8 !important;
+      color: #fff !important;
+    }
+    /* Mobile hamburger */
+    .site-nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      flex-shrink: 0;
+    }
+    .site-nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--brown);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .site-nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .site-nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .site-nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── Page Header ── */
+    .page-header {
+      background: var(--gray-bg);
+      padding: 60px 0 48px;
+      text-align: center;
+    }
+    .page-header h1 { margin-bottom: 12px; }
+    .page-header p {
+      font-size: 1.1rem;
+      color: var(--brown-mid);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ── Card Grid ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      padding: 60px 0;
+    }
+    .prompt-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .prompt-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(26,58,92,0.1);
+      text-decoration: none;
+    }
+    .prompt-card-emoji {
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+    .prompt-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin: 0;
+    }
+    .prompt-card p {
+      font-size: 0.95rem;
+      color: var(--brown-mid);
+      line-height: 1.7;
+      margin: 0;
+      flex-grow: 1;
+    }
+    .prompt-card-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--blue);
+      background: var(--blue-lt);
+      padding: 4px 12px;
+      border-radius: 99px;
+      align-self: flex-start;
+    }
+    .prompt-card-link {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      margin-top: 4px;
+    }
+    .prompt-card:hover .prompt-card-link { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.65);
+      padding: 36px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a { color: rgba(255,255,255,0.85); text-decoration: underline; }
+    footer a:hover { color: #fff; }
+    footer p { color: rgba(255,255,255,0.65); }
+
+    /* ── Mobile ── */
+    @media (max-width: 640px) {
+      .site-nav-toggle { display: flex; }
+      .site-nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        left: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px 16px 16px;
+        box-shadow: 0 8px 24px rgba(26,58,92,0.08);
+      }
+      .site-nav-links.open { display: flex; }
+      .site-nav-links a {
+        padding: 12px 16px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+      }
+      .site-nav-cta { text-align: center; margin-top: 8px; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .page-header { padding: 48px 0 36px; }
+      .card-grid { padding: 48px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     TOP NAV
+══════════════════════════════════ -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/" class="site-nav-logo">israelis<span>.nl</span> jobs</a>
+    <button class="site-nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="site-nav-links" id="navLinks">
+      <li><a href="/prompts" style="color:var(--brown); font-weight:600;">פרומפטים</a></li>
+      <li><a href="/#services" onclick="closeNav()">ליווי אישי</a></li>
+      <li><a href="/blog" onclick="closeNav()">מאמרים</a></li>
+      <li><a href="/#contact" onclick="closeNav()">צרו קשר</a></li>
+      <li><a href="/prompts/cv-upgrade#prompt-section" class="site-nav-cta" onclick="closeNav()">התחילו עכשיו</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════
+     PAGE HEADER
+══════════════════════════════════ -->
+<div class="page-header">
+  <div class="container">
+    <h1>ספריית פרומפטים</h1>
+    <p>כלים חכמים מבוססי AI שיעזרו לכם בכל שלב בחיפוש העבודה בהולנד.</p>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PROMPT CARD GRID
+══════════════════════════════════ -->
+<div class="container">
+  <div class="card-grid">
+
+    <a href="/prompts/cv-upgrade" class="prompt-card">
+      <div class="prompt-card-emoji">📝</div>
+      <h3>שדרוג קורות חיים עם AI</h3>
+      <p>פרומפט מקיף שמלווה אתכם שלב אחרי שלב בבניית קורות חיים מקצועיים, מותאמים לשוק ההולנדי.</p>
+      <span class="prompt-card-tag">קורות חיים</span>
+      <span class="prompt-card-link">התחילו עכשיו &larr;</span>
+    </a>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <p>
+      <a href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">🇮🇱 הקהילה שלנו בפייסבוק</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://israelis.nl" target="_blank" rel="noopener">israelis.nl</a>
+    </p>
+  </div>
+</footer>
+
+
+<script>
+  // Mobile nav toggle
+  function toggleNav() {
+    var toggle = document.getElementById('navToggle');
+    var links  = document.getElementById('navLinks');
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  }
+  function closeNav() {
+    document.getElementById('navToggle').classList.remove('open');
+    document.getElementById('navLinks').classList.remove('open');
+  }
+  // Close nav on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.site-nav')) closeNav();
+  });
+</script>
+
+</body>
+</html>

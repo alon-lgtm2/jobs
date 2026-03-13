@@ -655,9 +655,9 @@
     <ul class="site-nav-links" id="navLinks">
       <li><a href="/prompts" onclick="closeNav()">פרומפטים</a></li>
       <li><a href="#services" onclick="closeNav()">ליווי אישי</a></li>
-      <li><a href="#blog" onclick="closeNav()">מאמרים</a></li>
+      <li><a href="/blog" onclick="closeNav()">מאמרים</a></li>
       <li><a href="#contact" onclick="closeNav()">צרו קשר</a></li>
-      <li><a href="/prompts#prompt-section" class="site-nav-cta" onclick="closeNav()">התחילו עכשיו</a></li>
+      <li><a href="/prompts/cv-upgrade#prompt-section" class="site-nav-cta" onclick="closeNav()">התחילו עכשיו</a></li>
     </ul>
   </div>
 </nav>
@@ -673,15 +673,15 @@
       פרומפט חכם שהופך כל מודל שפה מתקדם למאמן קריירה אישי. חינם.
     </p>
     <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom: 8px;">
-      <a href="/prompts" style="font-size:0.85rem; color:var(--muted);">לינקים ופרומפטים</a>
+      <a href="/prompts" style="font-size:0.85rem; color:var(--muted);">ספריית פרומפטים</a>
       <span style="color:var(--border);">|</span>
       <a href="#services" style="font-size:0.85rem; color:var(--muted);">ליווי אישי</a>
       <span style="color:var(--border);">|</span>
-      <a href="#blog" style="font-size:0.85rem; color:var(--muted);">מאמרים</a>
+      <a href="/blog" style="font-size:0.85rem; color:var(--muted);">מאמרים</a>
       <span style="color:var(--border);">|</span>
       <a href="#contact" style="font-size:0.85rem; color:var(--muted);">צרו קשר</a>
     </div>
-    <a href="/prompts#prompt-section" class="btn btn-primary">
+    <a href="/prompts/cv-upgrade#prompt-section" class="btn btn-primary">
       העתיקו את הפרומפט והתחילו
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1)"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
@@ -791,8 +791,26 @@
 
     <div class="blog-grid">
 
-      <!-- Post 1 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
+      <!-- Featured Post 1 -->
+      <a class="blog-card" href="/blog/cv-strategy">
+        <div class="blog-card-img">
+          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #0d1b2a 0%, #1b3a5c 50%, #2563EB 100%);">
+            🍾
+          </div>
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-tag">קורות חיים / אסטרטגיה</span>
+          <h3>תבנו את הקו"ח הכי טובים שיש. ואז — אל תשלחו אותם לשום מקום</h3>
+          <p>Spray &amp; Pray לא רק שאינה אפקטיבית — היא עלולה לחסום אתכם לגמרי. מה באמת עובד, ומה צריך להיות בקורות חיים שיחכו במגירה לרגע הנכון.</p>
+          <div class="blog-card-footer">
+            <span>מרץ 2026</span>
+            <span class="blog-card-read">קראו עוד ←</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Featured Post 2 -->
+      <a class="blog-card" href="/blog/job-search-strategy">
         <div class="blog-card-img">
           <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #0f2544 0%, #1a3a5c 50%, #2563EB 100%);">
             🏹
@@ -809,26 +827,8 @@
         </div>
       </a>
 
-      <!-- Post 2 -->
-      <a class="blog-card" href="https://www.facebook.com/share/v/1P2XUkeHFx/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);">
-            🧓
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">גיל ושוק העבודה</span>
-          <h3>אייג׳יזם בהייטק — ולמה הוא הולך להשתנות</h3>
-          <p>אחת התופעות המכוערות בעולם התעסוקה. בעולם שבו כל המידע נגיש לכולם — הניסיון, האינטואיציה והיושרה הופכים ל-Unfair advantage.</p>
-          <div class="blog-card-footer">
-            <span>אוקטובר 2025</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 3 -->
-      <a class="blog-card" href="https://www.facebook.com/share/v/1Ed5Dr9KSf/" target="_blank" rel="noopener">
+      <!-- Featured Post 3 -->
+      <a class="blog-card" href="/blog/salary-negotiation">
         <div class="blog-card-img">
           <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #059669 100%);">
             💰
@@ -845,188 +845,8 @@
         </div>
       </a>
 
-      <!-- Post 4 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #4a1942 0%, #6b21a8 50%, #7c3aed 100%);">
-            🧾
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">פרילנסרים / ZZP</span>
-          <h3>מוציאים חשבוניות? חשוב להכיר את חוק ה-DBA</h3>
-          <p>אם אתם עובדים כפרילנסרים מול לקוח, או מעסיקים עצמאיים בעצמכם — החוק החדש שעומד להיכנס לתוקף עלול לשנות הכל. מה צריך לדעת כבר עכשיו.</p>
-          <div class="blog-card-footer">
-            <span>נובמבר 2024</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 5 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 50%, #ef4444 100%);">
-            🚗
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">תכנון פיננסי</span>
-          <h3>98 אלף יורו שנתי — ולמה זה לא מספיק</h3>
-          <p>שיחה אמיתית עם מי שתכנן טסלה, בית פרטי, גן ילדים וזיגו. התוצאה? בור חודשי של 3,000 יורו. לפני שאתם קופצים — תחשבו פעמיים.</p>
-          <div class="blog-card-footer">
-            <span>מאי 2023</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 6 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #312e81 0%, #4338ca 50%, #6366f1 100%);">
-            🤝
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">גיוס ורפרלים</span>
-          <h3>מישהו פה מאדיין? — על בקשות רפרל וכמה הן שוות</h3>
-          <p>כולם מכירים את הבקשות — "צריך שימליצו עליי דחוף". אבל כמה זה אתי, כמה זה אפקטיבי, ומה המועמד בעצם מפספס?</p>
-          <div class="blog-card-footer">
-            <span>אוגוסט 2025</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 7 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #78350f 0%, #d97706 50%, #fbbf24 100%);">
-            💶
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">מיסוי / 30% רולינג</span>
-          <h3>אזהרה: יש מצב שמבטלים את הרולינג</h3>
-          <p>הפרלמנט ההולנדי שוקל ביטול מוחלט של הטבת ה-30% לכיסוי גירעון תקציבי. מה זה אומר על שוק העבודה ועל המשכורות בהייטק?</p>
-          <div class="blog-card-footer">
-            <span>אפריל 2022</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 8 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #14532d 0%, #166534 50%, #4ade80 100%);">
-            🪖
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">קורות חיים</span>
-          <h3>שירות צבאי בקורות החיים — כן או לא?</h3>
-          <p>שאלה נצחית בכל קבוצה. הזווית שלי: תהליך המיון הוא הזדמנות לסנן מעסיקים, לא רק ההפך. ציון השירות יכול להוות כלי סינון מצוין לשני הצדדים.</p>
-          <div class="blog-card-footer">
-            <span>קורות חיים ואסטרטגיה</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 9 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #38bdf8 100%);">
-            🏦
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">נטוורקינג / פינטק</span>
-          <h3>Money20/20 אמסטרדם — ארוחת בוקר עם יזמי פינטק ישראליים</span></h3>
-          <p>בשולי הכנס הגדול, הנספחות הכלכלית בשגרירות ישראל בהאג מארגנת מפגש נטוורקינג עם השמות החמים בפינטק הישראלי. מגיעים סקרנים ורעבים.</p>
-          <div class="blog-card-footer">
-            <span>מאי 2025</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 10 -->
-      <a class="blog-card" href="https://sedermap.com/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #1e1b4b 0%, #1e3a5f 50%, #d97706 100%);">
-            🗺️
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">פרויקטים / חגים</span>
-          <h3>הגדה על המפה — יציאת מצרים על תצלום לוויין אמיתי</h3>
-          <p>סטארטאפ שלא מגייס ולא רוצה כסף — רק נותן. הגדה של פסח עם ציר זמן ומקורות היסטוריים, מוכנה להדפסה חינם. מתאים לגילאי 5 עד 105.</p>
-          <div class="blog-card-footer">
-            <span>אפריל 2025</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 11 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #14532d 0%, #15803d 50%, #4ade80 100%);">
-            🐜
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">מוטיבציה בחיפוש עבודה</span>
-          <h3>הצעתי עזרה — כמה אחוז מבקשי הסיוע באמת ענו?</h3>
-          <p>הציעו עזרה, קיבלו המון פניות, שלחו שלוש שאלות פשוטות. הנמלה והצרצר חיים גם בקהילה שלנו — ואחוז המשיבים יפתיע אתכם.</p>
-          <div class="blog-card-footer">
-            <span>אוגוסט 2023</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 12 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #1f2937 0%, #374151 50%, #6b7280 100%);">
-            📊
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">שוק העבודה / טיפים</span>
-          <h3>133 משרות על כל 100 מחפשי עבודה — ולמה עדיין קשה למצוא?</h3>
-          <p>הלמ"ס ההולנדי קבע: יש יותר משרות ממחפשי עבודה. אז מה הקאץ'? 4 בעיות נפוצות ו-4 פתרונות מעשיים לישראלים שחולמים על רילוקיישן להולנד.</p>
-          <div class="blog-card-footer">
-            <span>ספטמבר 2022</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 13 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 50%, #f87171 100%);">
-            🪟
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">השראה / חיפוש עבודה</span>
-          <h3>קיבלה דחייה — וכתבה בחזרה. מה קרה אחר כך?</h3>
-          <p>קיבלה מכתב דחייה על משרה אטרקטיבית, וזיהתה צורך אחר לחלוטין אצל המעסיק. כתבה, הציעה — וקיבלה הזמנה לפגישה. ככה נכנסים מהחלון.</p>
-          <div class="blog-card-footer">
-            <span>יוני 2024</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Post 14 -->
-      <a class="blog-card" href="https://www.linkedin.com/pulse/%D7%A8%D7%99%D7%9C%D7%95%D7%A7%D7%99%D7%99%D7%A9%D7%9F-%D7%9C%D7%94%D7%95%D7%9C%D7%A0%D7%93-%D7%9E%D7%94-%D7%A9%D7%A6%D7%A8%D7%99%D7%9A-%D7%9C%D7%93%D7%A2%D7%AA-%D7%9C%D7%A4%D7%A0%D7%99-%D7%A9%D7%A2%D7%95%D7%91%D7%A8%D7%99%D7%9D-alon-gildoni/" target="_blank" rel="noopener">
+      <!-- Featured Post 4 -->
+      <a class="blog-card" href="/blog/relocation-tips">
         <div class="blog-card-img">
           <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #ae2012 0%, #ca6702 50%, #ee9b00 100%);">
             🇳🇱
@@ -1043,42 +863,13 @@
         </div>
       </a>
 
-      <!-- Post 16 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #78350f 0%, #b45309 50%, #f59e0b 100%);">
-            🛂
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">ויזה / תושבות קבע</span>
-          <h3>גרת בהולנד 3 שנים? תבדוק שהויזה שלך לא מאפסת את הספירה</h3>
-          <p>סיפורו של דני — איש תוכנה בכיר שגילה שחודש וחצי של חופש בין עבודות אפס את 3.5 שנות הספירה לתושבות קבע. מה שכל Highly Skilled Migrant חייב לדעת.</p>
-          <div class="blog-card-footer">
-            <span>ויזה ורילוקיישן</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
-      </a>
+    </div>
 
-      <!-- Post 15 -->
-      <a class="blog-card" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
-        <div class="blog-card-img">
-          <div class="blog-card-img-placeholder" style="background: linear-gradient(135deg, #0d1b2a 0%, #1b3a5c 50%, #2563EB 100%);">
-            🍾
-          </div>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-card-tag">קורות חיים / אסטרטגיה</span>
-          <h3>תבנו את הקו"ח הכי טובים שיש. ואז — אל תשלחו אותם לשום מקום</h3>
-          <p>Spray & Pray לא רק שאינה אפקטיבית — היא עלולה לחסום אתכם לגמרי. מה באמת עובד, ומה צריך להיות בקורות חיים שיחכו במגירה לרגע הנכון.</p>
-          <div class="blog-card-footer">
-            <span>מרץ 2026</span>
-            <span class="blog-card-read">קראו עוד ←</span>
-          </div>
-        </div>
+    <div style="text-align:center; margin-top:32px;">
+      <a href="/blog" class="btn btn-secondary" style="display:inline-flex; align-items:center; gap:8px;">
+        לכל המאמרים
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1)"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-
     </div>
   </div>
 </section>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>קיבלה דחייה — וכתבה בחזרה. מה קרה אחר כך? | israelis.nl jobs</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--white:#FFFFFF;--gray-bg:#F8F9FA;--brand:#1a3a5c;--blue:#2563EB;--blue-lt:#EFF6FF;--text:#1a1a1a;--muted:#6b7280;--border:#E5E7EB;--radius:12px;--max:800px;--cream:#FFFFFF;--brown:#1a3a5c;--brown-mid:#6b7280;--line:#E5E7EB;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Heebo',sans-serif;color:var(--text);background:var(--white);line-height:1.7;}
+a{color:var(--blue);text-decoration:none;}
+.container{max-width:var(--max);margin:0 auto;padding:0 24px;}
+
+.site-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);height:60px;display:flex;align-items:center;}
+.site-nav-inner{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;width:100%;}
+.site-nav-logo{font-weight:800;font-size:1.15rem;color:var(--brown);text-decoration:none;}
+.site-nav-logo span{color:var(--blue);}
+.site-nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;}
+.site-nav-toggle span{display:block;width:22px;height:2px;background:var(--brown);border-radius:2px;transition:0.3s;}
+.site-nav-links{list-style:none;display:flex;align-items:center;gap:8px;}
+.site-nav-links a{font-size:0.88rem;font-weight:500;color:var(--brown-mid);text-decoration:none;padding:6px 12px;border-radius:8px;transition:background 0.2s,color 0.2s;}
+.site-nav-links a:hover{background:var(--gray-bg);color:var(--brown);}
+.site-nav-cta{background:var(--blue)!important;color:#fff!important;font-weight:600!important;padding:8px 18px!important;border-radius:8px!important;}
+.site-nav-cta:hover{background:#1d4ed8!important;}
+@media(max-width:640px){
+  .site-nav-toggle{display:flex;}
+  .site-nav-links{display:none;position:absolute;top:60px;right:0;left:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(12px);flex-direction:column;padding:16px 24px;border-bottom:1px solid var(--line);gap:4px;}
+  .site-nav-links.open{display:flex;}
+  .site-nav-links a{width:100%;padding:12px 16px;font-size:0.95rem;border-radius:8px;}
+  .site-nav-cta{text-align:center;margin-top:8px;}
+}
+
+.article-header{background:var(--gray-bg);padding:48px 0 40px;}
+.back-link{display:inline-block;font-size:0.9rem;color:var(--muted);margin-bottom:20px;text-decoration:none;transition:color 0.2s;}
+.back-link:hover{color:var(--brown);}
+.tag-badge{display:inline-block;background:var(--blue-lt);color:var(--blue);font-size:0.82rem;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:16px;}
+.article-header h1{font-size:1.85rem;font-weight:800;color:var(--brown);line-height:1.4;margin-bottom:12px;}
+.article-date{font-size:0.88rem;color:var(--muted);}
+
+.article-body{padding:48px 0;}
+.article-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:40px;max-width:var(--max);margin:0 auto;}
+.article-card p{margin-bottom:20px;font-size:1.05rem;color:var(--text);}
+
+.cta-section{background:var(--blue-lt);padding:48px 0;text-align:center;}
+.cta-section h2{font-size:1.4rem;font-weight:700;color:var(--brown);margin-bottom:16px;}
+.cta-btn{display:inline-block;background:var(--blue);color:#fff;font-weight:600;padding:12px 32px;border-radius:8px;font-size:1rem;transition:background 0.2s;}
+.cta-btn:hover{background:#1d4ed8;color:#fff;}
+
+footer{background:var(--gray-bg);padding:24px 0;text-align:center;font-size:0.88rem;color:var(--muted);border-top:1px solid var(--line);}
+footer a{color:var(--brown);text-decoration:none;font-weight:500;}
+footer a:hover{color:var(--blue);}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+<div class="site-nav-inner">
+<a href="/" class="site-nav-logo">israelis.nl <span>jobs</span></a>
+<button class="site-nav-toggle" onclick="toggleNav()" aria-label="תפריט">
+<span></span><span></span><span></span>
+</button>
+<ul class="site-nav-links" id="navLinks">
+<li><a href="/prompts">פרומפטים</a></li>
+<li><a href="/#services">ליווי אישי</a></li>
+<li><a href="/blog" style="color:var(--brown);font-weight:600;">מאמרים</a></li>
+<li><a href="/#contact">צרו קשר</a></li>
+<li><a href="/prompts/cv-upgrade#prompt-section" class="site-nav-cta">התחילו עכשיו</a></li>
+</ul>
+</div>
+</nav>
+
+<header class="article-header">
+<div class="container">
+<a href="/blog" class="back-link">← חזרה למאמרים</a>
+<div class="tag-badge">השראה / חיפוש עבודה</div>
+<h1>קיבלה דחייה — וכתבה בחזרה. מה קרה אחר כך?</h1>
+<div class="article-date">יוני 2024</div>
+</div>
+</header>
+
+<section class="article-body">
+<div class="container">
+<div class="article-card">
+<p>קיבלה מכתב דחייה על משרה אטרקטיבית, וזיהתה צורך אחר לחלוטין אצל המעסיק. כתבה, הציעה — וקיבלה הזמנה לפגישה. ככה נכנסים מהחלון.</p>
+<p style="color:var(--muted);font-style:italic;">המאמר המלא יתעדכן בקרוב.</p>
+</div>
+</div>
+</section>
+
+<section class="cta-section">
+<div class="container">
+<h2>רוצים לשדרג את קורות החיים?</h2>
+<a href="/prompts/cv-upgrade" class="cta-btn">לשדרוג קורות החיים →</a>
+</div>
+</section>
+
+<footer><div class="container"><p><a href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">🇮🇱 הקהילה שלנו בפייסבוק</a>&nbsp;·&nbsp;<a href="https://israelis.nl" target="_blank" rel="noopener">israelis.nl</a></p></div></footer>
+
+<script>
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');}
+function closeNav(){document.getElementById('navLinks').classList.remove('open');}
+document.addEventListener('click',function(e){if(!e.target.closest('.site-nav'))closeNav();});
+</script>
+</body>
+</html>
