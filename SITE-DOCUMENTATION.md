@@ -5,6 +5,8 @@
 A Hebrew-language (RTL) landing page and resource hub for Israeli job seekers relocating to the Netherlands. Created by Alon, who has spent 8+ years helping Israelis integrate professionally in the Dutch job market.
 
 **Live URL:** https://jobs.israelis.nl
+**Staging URL:** https://jobs-staging-x4ws.onrender.com/
+**Git repo:** https://github.com/alon-lgtm2/jobs.git (branch: `staging`)
 
 ---
 
@@ -13,17 +15,18 @@ A Hebrew-language (RTL) landing page and resource hub for Israeli job seekers re
 | Layer | Technology |
 |-------|-----------|
 | Framework | Next.js 16.1.6 + React 19.2.3 + TypeScript 5 |
-| Styling | Tailwind CSS 4 + CSS custom properties |
-| Fonts | Heebo (body, Google Fonts) |
+| Styling | Inline CSS custom properties (no Tailwind in production HTML) |
+| Fonts | Heebo (body) + Frank Ruhl Libre (headings) — Google Fonts |
 | Deployment | Render (Node 20, `render.yaml`) |
 | Form Backend | Formspree (ID: `xzdjglaz`) |
 | Messaging | WhatsApp deep links (+31644295691) |
+| Lead Capture | Google Identity Services (GSI) + Web3Forms |
 
 ---
 
 ## Architecture
 
-The site is **static**. A single `index.html` file (~1400 lines) is served via a Next.js API route handler (`src/app/route.ts`) with `force-static` caching. There is no database, authentication, or server-side logic.
+The site is **static**. A single `index.html` file (~1500+ lines) is served via a Next.js API route handler (`src/app/route.ts`) with `force-static` caching. There is no database, authentication, or server-side logic. All HTML, CSS, and JavaScript are inline in `index.html`.
 
 ```
 jobs-repo/
@@ -37,6 +40,7 @@ jobs-repo/
 ├── next.config.ts            # Next.js config (empty)
 ├── postcss.config.mjs        # Tailwind PostCSS plugin
 ├── render.yaml               # Render deployment config
+├── SITE-DOCUMENTATION.md     # This file
 └── tsconfig.json             # TypeScript config
 ```
 
@@ -50,19 +54,27 @@ The site is a single page with anchor-based navigation. Sections in order:
 |---|---------|-----|-------------|
 | 1 | Hero | `#hero` | Main headline, CTA button, quick nav links |
 | 2 | Why | `#why` | Alon's personal story and motivation |
-| 3 | How-To | `#how` | 3-step guide for using the AI prompt |
-| 4 | Useful Links & Prompts | `#useful-links` | Contains both the AI prompt and ATS tools |
-| 4a | — AI Resume Prompt | `#prompt-section` | 670+ line AI coaching prompt with copy button |
-| 4b | — ATS Check | `#ats` | ATS explanation + Jobscan link |
-| 5 | Want More? | `#more` | Upsell to personal coaching via WhatsApp |
-| 6 | Services | `#services` | 3 coaching package tiers |
-| 7 | Blog | `#blog` | 16 article cards (external links) |
-| 8 | Contact | `#contact` | Contact form + WhatsApp/Facebook/israelis.nl links |
-| 9 | Footer | — | Community links + copyright |
+| 3 | How-To | `#how` | Detailed 3-step guide + tip/note boxes |
+| 4 | Prompts & Links | `#useful-links` | Hub containing all sub-resources (see below) |
+| 4a | — How It Works | *(no anchor)* | Mini 3-card visual steps grid |
+| 4b | — AI Resume Prompt | `#prompt-section` | Full AI coaching prompt with copy button |
+| 4c | — ATS Check | `#ats` | ATS explanation + Jobscan link |
+| 4d | — Want More? | `#more` | WhatsApp CTA card — nested inside #useful-links |
+| 5 | Services | `#services` | 3 coaching package tiers with Google Sign-In CTAs |
+| 6 | Blog | `#blog` | 16 article cards (external links) |
+| 7 | Contact | `#contact` | Contact form + WhatsApp/Facebook/israelis.nl links |
+| 8 | Footer | — | Community links + copyright |
 
 ---
 
 ## Section Details
+
+### Sticky Nav
+- Frosted-glass bar (`backdrop-filter: blur(18px)`) fixed at top
+- Logo: `israelis.nl jobs` (links to `#hero`)
+- Links: פרומפטים | איך משתמשים | ליווי אישי | מאמרים | צרו קשר
+- Pill CTA: "התחילו עכשיו" → `#prompt-section`
+- Mobile: hamburger toggle, animated open/close via `toggleNav()` / `closeNav()`
 
 ### Hero (`#hero`)
 - Badge: "🇮🇱 → 🇳🇱 מוצאים עבודה בהולנד"
@@ -72,20 +84,26 @@ The site is a single page with anchor-based navigation. Sections in order:
 
 ### Why (`#why`)
 - First-person narrative from Alon
-- Left-bordered story box styling
+- Right-bordered story box (terracotta accent)
 
 ### How-To (`#how`)
 - 3 numbered steps (copy → open AI chat → paste & follow)
 - Tip box: use voice input for more natural results
 - Note box: use paid/advanced AI models for better quality
 
-### Useful Links & Prompts (`#useful-links`)
-Contains two sub-sections:
+### Prompts & Links (`#useful-links`)
+The main resource hub. Contains four sub-sections in this order:
+
+**How It Works (mini steps)**
+- 3-card horizontal grid (`hiw-grid` / `hiw-card`)
+- Step 1: העתיקו את הפרומפט
+- Step 2: ענו על השאלות
+- Step 3: קבלו CV מוכן
 
 **AI Resume Prompt (`#prompt-section`)**
 - Scrollable container (max-height 420px)
-- Dark header bar with "Copy Prompt" button
-- 670+ line prompt covering 10 guided steps:
+- Dark brown header bar with "העתק פרומפט" button
+- 10-step AI coaching prompt:
   1. Welcome & input options
   2. Professional story discovery
   3. Title + tagline
@@ -101,12 +119,12 @@ Contains two sub-sections:
 - Card explaining Applicant Tracking Systems
 - External link to Jobscan (free tool)
 
-### Want More? (`#more`)
-- Gradient card (navy → blue)
+**Want More? (`#more`)**
+- Gradient card (brown → terracotta), nested inside `#useful-links`
 - WhatsApp CTA with pre-filled Hebrew message
 
 ### Services (`#services`)
-Three coaching packages:
+Three coaching packages, each with a Google Sign-In CTA:
 
 | Package | Emoji | Highlight |
 |---------|-------|-----------|
@@ -114,7 +132,7 @@ Three coaching packages:
 | צוללים למים (Diving In) | 🤿 | **Featured** — 1:1 coaching, resume rewrite, 30-day support |
 | מוצאים עבודה! (Finding Work!) | 🚀 | Full 3-month coaching, unlimited calls |
 
-All CTAs link to Google Forms (placeholder URLs).
+Each card has a GSI (Google Sign-In) button. On sign-in, the user's name/email and chosen package are submitted to Web3Forms. See [Google Sign-In Integration](#google-sign-in-integration) below.
 
 ### Blog (`#blog`)
 - 16 article cards in responsive grid
@@ -129,38 +147,88 @@ All CTAs link to Google Forms (placeholder URLs).
 
 ---
 
-## Design System
+## Design System — Warm Editorial
+
+The site uses a **Warm Editorial** aesthetic: cream/terracotta/brown palette, Frank Ruhl Libre serif headings, generous whitespace.
 
 ### Colors (CSS Variables)
 ```css
 --white:    #FFFFFF
---gray-bg:  #F8F9FA
---brand:    #1a3a5c    /* Primary navy */
---blue:     #2563EB    /* Accent blue */
---blue-lt:  #EFF6FF    /* Light blue bg */
---wa:       #25D366    /* WhatsApp green */
---text:     #1a1a1a
---muted:    #6b7280
---border:   #E5E7EB
---radius:   12px
---max:      800px      /* Container max-width */
+--gray-bg:  #F0EAE0       /* Sand background */
+--brand:    #3D2B1F       /* Brown (remapped from navy) */
+--blue:     #C4604A       /* Terracotta (remapped from blue) */
+--blue-lt:  #FFF0E8       /* Peach (remapped from light blue) */
+--wa:       #25D366       /* WhatsApp green */
+--wa-dark:  #1da851
+--text:     #3D2B1F
+--muted:    #6B5344
+--border:   rgba(61,43,31,0.12)
+--radius:   16px
+--max:      800px         /* Container max-width */
+--cream:    #FAF6F0       /* Page background */
+--sand:     #F0EAE0       /* Alternate section bg */
+--terra:    #C4604A       /* Terracotta — primary accent */
+--terra-lt: #E8A090
+--terra-bg: rgba(196,96,74,0.06)
+--peach:    #FFF0E8
+--brown:    #3D2B1F       /* Primary dark */
+--brown-mid:#6B5344
+--brown-lt: #A08878
+--line:     rgba(61,43,31,0.1)
 ```
 
+> **Note:** The legacy variable names (`--brand`, `--blue`, `--blue-lt`) are kept as-is because inline `style=""` attributes throughout the HTML body reference them. They are remapped to warm equivalents in `:root`.
+
 ### Typography
+- **Headings (h1/h2/h3):** Frank Ruhl Libre (serif), weights 300–900
 - **Body:** Heebo (Hebrew-optimized sans-serif), weights 300–800
 - **Direction:** RTL (`<html lang="he" dir="rtl">`)
 
 ### Responsive Breakpoints
 - `max-width: 700px` — contact grid stacks, blog grid becomes single column
-- `max-width: 600px` — reduced padding, full-width buttons, smaller prompt text
+- `max-width: 640px` — mobile nav hamburger activates
+- `max-width: 600px` — reduced padding, full-width buttons, smaller prompt text, `hiw-grid` becomes single column
 
 ---
 
 ## JavaScript Features
 
-1. **Copy-to-Clipboard** — `copyPrompt()` uses `navigator.clipboard` with `execCommand` fallback
+1. **Copy-to-Clipboard** — `copyPrompt()` uses `navigator.clipboard` with `execCommand` fallback; shows "הועתק!" state via `showCopied()`
 2. **Contact Form** — `handleFormSubmit()` posts to Formspree, shows success/error states
 3. **Dynamic Year** — Footer copyright year auto-updates
+4. **Nav Toggle** — `toggleNav()` / `closeNav()` for mobile hamburger; outside-click listener closes menu
+5. **Google Sign-In** — `loadGsi()` lazy-loads GSI script; `setPkg()` tracks which package was clicked; `onGsiCredential()` decodes JWT and submits lead to Web3Forms
+
+---
+
+## Google Sign-In Integration
+
+Each service package card has a Google Sign-In button that captures the visitor's name and email and sends a lead notification to Alon via Web3Forms.
+
+### How it works
+1. `loadGsi()` lazily appends the GSI script on first call
+2. `setPkg(name)` is called via `onclick` on the `.gsi-wrapper` div — stores which package was selected in `window._pkg`
+3. `google.accounts.id.initialize()` registers `onGsiCredential` as the callback
+4. Three pill-shaped Hebrew-locale buttons are rendered via `renderButton()` into `#gsi-btn-0/1/2`
+5. On sign-in, `onGsiCredential` decodes the JWT to extract `name` and `email`, posts to Web3Forms, and shows a per-card success state
+
+### Configuration (⚠️ requires real values)
+```js
+var GSI_CLIENT_ID = 'YOUR_CLIENT_ID.apps.googleusercontent.com';
+var WEB3FORMS_KEY = 'YOUR_WEB3FORMS_KEY';
+```
+
+- **GSI_CLIENT_ID** — create at [Google Cloud Console](https://console.cloud.google.com/) → APIs & Services → Credentials → OAuth 2.0 Client ID (Web application). Add your domain as an authorized JavaScript origin.
+- **WEB3FORMS_KEY** — get free at [web3forms.com](https://web3forms.com/). Leads arrive in Alon's inbox.
+
+### HTML structure per card
+```html
+<div class="gsi-wrapper" onclick="setPkg('חבילה X')">
+  <p class="gsi-label">הכניסה מאפשרת לאלון ליצור איתך קשר</p>
+  <div id="gsi-btn-N" class="gsi-btn-container"></div>
+  <div class="gsi-success" id="gsi-ok-N">✅ תודה! אלון יחזור אליך בקרוב.</div>
+</div>
+```
 
 ---
 
@@ -171,7 +239,8 @@ All CTAs link to Google Forms (placeholder URLs).
 | Formspree | Contact form backend | Form ID: `xzdjglaz` |
 | WhatsApp | Direct messaging CTA | +31644295691 |
 | Jobscan | ATS resume checking | https://www.jobscan.co/ |
-| Google Forms | Package inquiry forms | Placeholder URLs |
+| Web3Forms | Lead capture from GSI sign-in | Access key: replace placeholder |
+| Google Identity Services | Sign-in buttons on service cards | Client ID: replace placeholder |
 | Facebook Group | Community | Group ID: `1550032319015043` |
 | israelis.nl | Parent site | https://israelis.nl |
 
@@ -183,7 +252,11 @@ All CTAs link to Google Forms (placeholder URLs).
 # Install dependencies
 npm install
 
-# Run dev server
+# Local preview (static file server, no build needed)
+# Uses .claude/launch.json — start via Claude Code preview
+npx serve . -p 4000 -s
+
+# Run Next.js dev server
 npm run dev
 
 # Build for production
@@ -197,9 +270,11 @@ npm start
 
 Deployed on **Render** via `render.yaml`:
 - Service: `jobs-staging` (web)
+- Branch: `staging`
 - Runtime: Node 20
 - Build: `npm install && npm run build`
 - Start: `npm start`
+- Staging URL: https://jobs-staging-x4ws.onrender.com/
 
 ---
 
