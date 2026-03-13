@@ -430,6 +430,125 @@
       font-weight: 600;
     }
 
+    /* ── Services / Packages ── */
+    .services-intro {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 40px;
+    }
+    .services-intro p { font-size: 1.05rem; }
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+    .package-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .package-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(26,58,92,0.1);
+    }
+    .package-card.featured {
+      border-color: var(--blue);
+      border-width: 2px;
+      box-shadow: 0 4px 20px rgba(37,99,235,0.15);
+    }
+    .package-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 99px;
+    }
+    .package-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .package-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--brand);
+      margin: 0;
+    }
+    .package-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.65;
+    }
+    .package-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      flex: 1;
+    }
+    .package-features li {
+      font-size: 0.88rem;
+      color: var(--text);
+      padding-right: 22px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .package-features li::before {
+      content: '✓';
+      position: absolute;
+      right: 0;
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--blue);
+      border: 2px solid var(--blue);
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Heebo', sans-serif;
+      transition: background 0.15s, color 0.15s, transform 0.15s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .btn-outline:hover {
+      background: var(--blue);
+      color: #fff;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .package-card.featured .btn-outline {
+      background: var(--blue);
+      color: #fff;
+    }
+    .package-card.featured .btn-outline:hover {
+      background: #1d4fd8;
+    }
+    .services-disclaimer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
     /* ── Responsive ── */
     @media (max-width: 700px) {
       .contact-wrap { grid-template-columns: 1fr; gap: 28px; }
@@ -459,6 +578,8 @@
       פרומפט חכם שהופך כל מודל שפה מתקדם למאמן קריירה אישי. חינם.
     </p>
     <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom: 8px;">
+      <a href="#services" style="font-size:0.85rem; color:var(--muted);">ליווי אישי</a>
+      <span style="color:var(--border);">|</span>
       <a href="#blog" style="font-size:0.85rem; color:var(--muted);">מאמרים</a>
       <span style="color:var(--border);">|</span>
       <a href="#contact" style="font-size:0.85rem; color:var(--muted);">צרו קשר</a>
@@ -740,7 +861,94 @@ https://wa.me/31644295691
 
 
 <!-- ══════════════════════════════════
-     7. BLOG
+     7. SERVICES — ליווי אישי
+══════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="services-intro">
+      <h2>ליווי אישי במציאת עבודה</h2>
+      <p>
+        הייטקיסטים ישראלים רבים שמחפשים עבודה בהולנד נתקלים בקשיים שלא נתקלו בהם בישראל.
+        הקשרים האישיים כמעט ולא קיימים, ושיטות הפניה הישראליות לא תמיד עובדות פה.
+        לכן בנינו מכלול של חבילות ליווי — כדי שתוכלו לעבור גם את המשוכה הזאת.
+      </p>
+    </div>
+
+    <div class="packages-grid">
+
+      <!-- Package 1: מפשילים שרוולים -->
+      <div class="package-card">
+        <div class="package-icon">🛠️</div>
+        <h3>מפשילים שרוולים</h3>
+        <p class="package-desc">
+          כל הכלים להתחיל לחפש עבודה בהולנד בצורה חכמה ומדויקת — מתאים למי שאוהב לעבוד Hands-on וצריך רק את הכיוון הנכון.
+        </p>
+        <ul class="package-features">
+          <li>גישה מיידית להקלטה של הוובינר "מוצאים עבודה בהולנד"</li>
+          <li>3 חודשי שימוש באפליקציית "7 ביום" — שיטה מוכחת לניהול חיפוש</li>
+          <li>שימוש ב-AI לאיתור חברות רלוונטיות (לא רק משרות פתוחות)</li>
+          <li>מעקב מסודר אחרי פניות, ראיונות והזדמנויות</li>
+          <li>כל הסכום מתקזז בשדרוג לחבילה גבוהה יותר</li>
+        </ul>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" target="_blank" rel="noopener" class="btn btn-outline">
+          ספרו לי עוד
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Package 2: צוללים למים (featured) -->
+      <div class="package-card featured">
+        <span class="package-badge">הכי נפוץ</span>
+        <div class="package-icon">🤿</div>
+        <h3>צוללים למים</h3>
+        <p class="package-desc">
+          חבילת ליווי ממוקדת שמעניקה לך מפת דרכים ברורה, מסמכים מקצועיים, ותמיכה אישית כדי להאיץ את תהליך מציאת העבודה.
+        </p>
+        <ul class="package-features">
+          <li>כל מה שבחבילת "מפשילים שרוולים" ובנוסף:</li>
+          <li>פגישת עומק (Zoom / אמסטרדם) למיפוי קריירה ותכנון אסטרטגי</li>
+          <li>שכתוב מלא של קורות חיים ופרופיל LinkedIn</li>
+          <li>תבניות פנייה מוכחות לרשת קשרים ולהגשת מועמדות</li>
+          <li>רשימת חברות ידידותיות לוויזה ורלוונטיות לתחום שלך</li>
+          <li>30 יום ליווי אישי במייל ו-WhatsApp</li>
+        </ul>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" target="_blank" rel="noopener" class="btn btn-outline">
+          ספרו לי עוד
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <!-- Package 3: מוצאים עבודה! -->
+      <div class="package-card">
+        <div class="package-icon">🚀</div>
+        <h3>מוצאים עבודה!</h3>
+        <p class="package-desc">
+          ליווי מקיף למשך 3 חודשים — עם זמינות בלתי מוגבלת ותמיכה מלאה בכל שלב בדרך, עד שתיכנס לתפקיד החדש.
+        </p>
+        <ul class="package-features">
+          <li>כל מה שבחבילת "צוללים למים" ובנוסף:</li>
+          <li>פגישת פתיחה (~2 שעות) לתכנון מפורט של 90 הימים הקרובים</li>
+          <li>זמינות בלתי מוגבלת בשיחות מתואמות למשך 3 חודשים</li>
+          <li>סימולציות ראיונות ללא הגבלה + הכנה למשא ומתן על שכר</li>
+          <li>סיוע במשימות בית בתהליכי מיון (Assignments)</li>
+          <li>חיבורים ישירים למגייסים וקהילות מקצועיות</li>
+          <li>בניית קשרים אסטרטגית עם אנשים רלוונטיים בתעשייה</li>
+          <li>מפת השתלבות אישית לתחילת עבודה</li>
+        </ul>
+        <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" target="_blank" rel="noopener" class="btn btn-outline">
+          ספרו לי עוד
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+    </div>
+    <p class="services-disclaimer">* אין באמור הבטחה למציאת עבודה</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     8. BLOG
 ══════════════════════════════════ -->
 <section id="blog">
   <div class="container">
