@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>פרומפטים וקישורים | israelis.nl</title>
+  <meta name="description" content="פרומפט חכם ומונחה AI לבניית קורות חיים מקצועיים - חינם. מותאם לשוק העבודה בהולנד." />
+  <meta property="og:title" content="פרומפטים וקישורים | israelis.nl" />
+  <meta property="og:description" content="פרומפט חכם ומונחה AI לבניית קורות חיים מקצועיים - חינם. מותאם לשוק העבודה בהולנד." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:    #FFFFFF;
+      --gray-bg:  #F8F9FA;
+      --brand:    #1a3a5c;
+      --blue:     #2563EB;
+      --blue-lt:  #EFF6FF;
+      --wa:       #25D366;
+      --wa-dark:  #1da851;
+      --text:     #1a1a1a;
+      --muted:    #6b7280;
+      --border:   #E5E7EB;
+      --radius:   12px;
+      --max:      800px;
+      --cream:    #FFFFFF;
+      --sand:     #F8F9FA;
+      --terra:    #2563EB;
+      --terra-lt: #93bbfd;
+      --terra-bg: rgba(37,99,235,0.06);
+      --peach:    #EFF6FF;
+      --brown:    #1a3a5c;
+      --brown-mid:#6b7280;
+      --brown-lt: #9ca3af;
+      --line:     #E5E7EB;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Heebo', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section { padding: 60px 0; }
+    section:nth-child(even) { background: var(--gray-bg); }
+
+    /* ── Typography ── */
+    h1 {
+      font-family: 'Heebo', system-ui, sans-serif;
+      font-size: clamp(1.9rem, 5vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--brand);
+    }
+    h2 {
+      font-family: 'Heebo', system-ui, sans-serif;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 16px;
+    }
+    h3 {
+      font-family: 'Heebo', system-ui, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    p  { color: var(--brown-mid); margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    a  { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-family: 'Heebo', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-2px); text-decoration: none; }
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+    }
+    .btn-primary:hover {
+      background: #1d4fd8;
+      box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+    }
+    .btn-wa {
+      background: var(--wa);
+      color: #fff;
+      font-size: 1.05rem;
+      padding: 16px 32px;
+      box-shadow: 0 4px 14px rgba(37,211,102,0.25);
+    }
+    .btn-wa:hover {
+      background: var(--wa-dark);
+      box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+    }
+    .btn-copy {
+      background: var(--brand);
+      color: #fff;
+      font-size: 0.9rem;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+    }
+    .btn-copy:hover { background: #15304d; }
+    .btn-copy.copied { background: #16a34a; border-color: #16a34a; }
+
+    /* ── Steps ── */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-text strong {
+      color: var(--brown);
+      font-weight: 700;
+      font-family: 'Heebo', system-ui, sans-serif;
+      font-size: 1.02rem;
+    }
+    .step-text p { margin-bottom: 0; color: var(--brown-mid); font-size: 0.95rem; }
+
+    /* ── Tip / Note boxes ── */
+    .tip-box, .note-box {
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-top: 22px;
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .tip-box {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      color: #78350f;
+    }
+    .note-box {
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      color: #166534;
+    }
+    .tip-box strong, .note-box strong { font-weight: 700; }
+
+    /* ── Prompt box ── */
+    .prompt-wrapper {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: none;
+    }
+    .prompt-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      background: var(--brown);
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .prompt-header-label {
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .prompt-body {
+      max-height: 420px;
+      overflow-y: auto;
+      padding: 24px;
+      background: #fafafa;
+    }
+    .prompt-body pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: #1e293b;
+      white-space: pre-wrap;
+      word-break: break-word;
+      text-align: right;
+      direction: rtl;
+    }
+    .prompt-body::-webkit-scrollbar { width: 6px; }
+    .prompt-body::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 3px; }
+    .prompt-body::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .prompt-body::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* ── ATS section ── */
+    .ats-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── How-it-works mini grid ── */
+    .hiw-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .hiw-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hiw-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(26,58,92,0.1);
+    }
+    .hiw-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hiw-card strong {
+      font-family: 'Heebo', system-ui, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1.4;
+    }
+    .hiw-card p {
+      font-size: 0.88rem;
+      color: var(--brown-mid);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ── More section ── */
+    .more-card {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2563EB 100%);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .more-card h2 { color: #fff; position: relative; }
+    .more-card p  { color: rgba(255,255,255,0.82); margin-bottom: 0; position: relative; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.65);
+      padding: 36px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    footer a { color: rgba(255,255,255,0.85); text-decoration: underline; }
+    footer a:hover { color: #fff; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 10px; }
+
+    /* ── Top Nav ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .site-nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      gap: 16px;
+    }
+    .site-nav-logo {
+      font-family: 'Heebo', system-ui, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brown);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .site-nav-logo:hover { text-decoration: none; color: var(--blue); }
+    .site-nav-logo span { color: var(--blue); }
+    .site-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+    .site-nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 99px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .site-nav-links a:hover {
+      color: var(--brown);
+      background: var(--terra-bg);
+      text-decoration: none;
+    }
+    .site-nav-cta {
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: #fff !important;
+      background: var(--blue) !important;
+      padding: 8px 18px !important;
+    }
+    .site-nav-cta:hover {
+      background: #1d4fd8 !important;
+      color: #fff !important;
+    }
+    /* Mobile hamburger */
+    .site-nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      flex-shrink: 0;
+    }
+    .site-nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--brown);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .site-nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .site-nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .site-nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .site-nav-toggle { display: flex; }
+      .site-nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        left: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px 16px 16px;
+        box-shadow: 0 8px 24px rgba(26,58,92,0.08);
+      }
+      .site-nav-links.open { display: flex; }
+      .site-nav-links a {
+        padding: 12px 16px;
+        border-radius: 10px;
+        font-size: 0.95rem;
+      }
+      .site-nav-cta { text-align: center; margin-top: 8px; }
+      .hiw-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      section { padding: 48px 0; }
+      .btn-wa { width: 100%; font-size: 1rem; padding: 16px 24px; }
+      .btn-primary { width: 100%; }
+      .more-card { padding: 32px 20px; }
+      .prompt-body { max-height: 320px; padding: 16px; }
+      .prompt-body pre { font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     TOP NAV
+══════════════════════════════════ -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a href="/" class="site-nav-logo">israelis<span>.nl</span> jobs</a>
+    <button class="site-nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="site-nav-links" id="navLinks">
+      <li><a href="/prompts" style="color:var(--brown); font-weight:600;">פרומפטים</a></li>
+      <li><a href="/#services" onclick="closeNav()">ליווי אישי</a></li>
+      <li><a href="/#blog" onclick="closeNav()">מאמרים</a></li>
+      <li><a href="/#contact" onclick="closeNav()">צרו קשר</a></li>
+      <li><a href="#prompt-section" class="site-nav-cta" onclick="closeNav()">התחילו עכשיו</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════
+     PAGE HEADER
+══════════════════════════════════ -->
+<section id="useful-links" style="padding: 60px 0;">
+  <div class="container">
+    <h2>פרומפטים וקישורים שימושיים</h2>
+    <p>כלים ומשאבים שיעזרו לכם לשדרג את קורות החיים ולהתכונן לשוק העבודה ההולנדי.</p>
+
+    <!-- ── How it works ── -->
+    <div style="margin: 36px 0 0;">
+      <h3 style="font-size:1.15rem; font-weight:700; color:var(--brown); margin-bottom:6px;">איך זה עובד?</h3>
+      <p style="margin-bottom:20px; font-size:0.95rem;">שלושה צעדים פשוטים לקורות חיים שיפתחו לכם דלתות</p>
+      <div class="hiw-grid">
+        <div class="hiw-card">
+          <div class="hiw-num">1</div>
+          <strong>העתיקו את הפרומפט</strong>
+          <p>לחצו על כפתור ההעתקה והעבירו ל-ChatGPT, Claude או Gemini.</p>
+        </div>
+        <div class="hiw-card">
+          <div class="hiw-num">2</div>
+          <strong>ענו על השאלות</strong>
+          <p>ה-AI שואל שאלות ממוקדות — פשוט ענו בטבעיות.</p>
+        </div>
+        <div class="hiw-card">
+          <div class="hiw-num">3</div>
+          <strong>קבלו CV מוכן</strong>
+          <p>תוך דקות — קורות חיים מותאמים לשוק ההולנדי.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     HOW TO USE
+══════════════════════════════════ -->
+<section id="how">
+  <div class="container">
+    <h2>איך משתמשים?</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>העתיקו את הפרומפט למטה</strong>
+          <p>לחצו על כפתור ״העתק פרומפט״ — הכל יועתק בקליק אחד.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>פתחו צ׳אט חדש במודל AI שאתם משתמשים בו</strong>
+          <p>Claude, ChatGPT, Gemini — הפרומפט עובד עם כולם.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>הדביקו את הפרומפט ועקבו אחרי ההוראות</strong>
+          <p>המודל ידריך אתכם שלב אחרי שלב עד לקורות חיים מוכנים.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      💡 <strong>טיפ שמשנה את המשחק:</strong> דברו במקום להקליד. כל הפלטפורמות תומכות בקלט קולי.
+      כשמדברים, הסיפור יוצא טבעי ואותנטי — בדיוק כמו בראיון עבודה. הקלדה גורמת לנו לכתוב
+      ב״שפת קורות חיים״. דיבור גורם לנו להיות אנחנו.
+    </div>
+
+    <div class="note-box">
+      ⚡ <strong>המלצה:</strong> השתמשו בגרסאות המתקדמות/בתשלום של המודלים. ההבדל באיכות הפלט
+      משמעותי. הפרומפט אגנוסטי — הוא עובד עם כל פלטפורמה.
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     THE PROMPT
+══════════════════════════════════ -->
+<section id="prompt-section">
+  <div class="container">
+    <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--brand); margin-bottom: 12px;">📋 פרומפט AI לשדרוג קורות חיים</h3>
+    <p style="margin-bottom: 16px;">העתיקו את הפרומפט המלא והדביקו אותו ישירות ל-Claude, ChatGPT, Gemini או כל מודל אחר.</p>
+
+    <div class="prompt-wrapper">
+      <div class="prompt-header">
+        <span class="prompt-header-label">📋 פרומפט שדרוג קורות חיים</span>
+        <button class="btn btn-copy" id="copyBtn" onclick="copyPrompt()">
+          העתק פרומפט
+        </button>
+      </div>
+      <div class="prompt-body">
+        <pre id="promptText">אתה מומחה גיוס בכיר עם ניסיון עשיר בשוק העבודה ההולנדי והאירופי. ראיינת אלפי מועמדים, סרקת אלפי קורות חיים, ואתה מכיר לעומק את מה שבאמת עובד - ומה שלא - בקורות חיים.
+
+התפקיד שלך: ללוות את המשתמש בתהליך בנייה או שדרוג של קורות חיים, שלב אחרי שלב, עד שהתוצאה הסופית היא מסמך חד, קוהרנטי ואפקטיבי.
+
+## כללי התנהלות
+
+- **חוק ברזל: שאלה אחת בלבד בכל פעם.** לא שתיים, לא "ועוד דבר". שאלה אחת, תחכה לתשובה, ורק אז תמשיך. זה לא רק כלל טכני - ככה בונים שיחה אמיתית.
+- כל התקשורת איתי תהיה בעברית. ידידותית, ישירה, חמה - כמו חבר חכם שאומר את האמת בלי לעטוף.
+- תן הכוונה, תובנות וטיפים קצרים בין השלבים - אל תהיה רובוט, תהיה מאמן.
+- קורות החיים הסופיים ייכתבו בשפת המקור שלהם (אנגלית, הולנדית, או כל שפה אחרת בהתאם לצורך). כל שאר התהליך - בעברית.
+- בסוף התהליך, תייצר קורות חיים מחודשים ומלוטשים מוכנים לשימוש.
+
+## שלב 0: קבלת פנים וקלט ראשוני
+
+התחל בהודעה הבאה:
+
+"שלום! אני כאן כדי לעזור לך לבנות קורות חיים שבאמת עובדים.
+
+💡 לפני שמתחילים - טיפ קטן: אם הפלטפורמה שלך תומכת בקלט קולי, דבר/י במקום להקליד. כשמדברים, הסיפור יוצא טבעי ואותנטי. כשמקלידים, נוטים לכתוב ב'שפת קורות חיים'. תנסו - זה משנה את המשחק.
+
+אפשר להתחיל בכמה דרכים - תבחר/י מה הכי נוח:
+🔹 להעלות קורות חיים קיימים (PDF, Word, או טקסט)
+🔹 להדביק את הטקסט של פרופיל הלינקדאין שלך
+🔹 להתחיל מאפס - אני אשאל אותך שאלות ונבנה יחד
+
+מה מתאים לך?"
+
+אחרי שהמשתמש שיתף את החומר, עשה סריקה ראשונית ותן 2-3 תצפיות ראשוניות - מה בולט לטובה ומה דורש עבודה. היה ספציפי אבל לא מציף. אחרי התצפיות, המשך לשלב 1.
+
+## שלב 1: מי אתה ומה הסיפור?
+
+שאל: "בוא נתחיל מהבסיס. תספר/י לי בכמה משפטים את הסיפור המקצועי שלך - מאיפה התחלת ואיפה את/ה היום?"
+
+המטרה: להבין את הסיפור המקצועי. קורות חיים טובים מספרים סיפור של מסע, צמיחה וכיוון - לא רשימה של תפקידים. הקוהרנטיות היא הדבר הכי חשוב בקורות חיים, והכי נדיר.
+
+אם הסיפור לא ברור או מנותק - עזור למשתמש למצוא את החוט האדום. שאל שאלת המשך אחת בלבד.
+
+## שלב 2: הכותרת הכפולה
+
+שאל: "מה התואר המקצועי היבש שלך? בשני-שלושה מילים - מה את/ה? (למשל: Senior Product Manager, Data Lead, Operations Director)"
+
+אחרי שקיבלת תשובה, המשך ושאל: "עכשיו בוא ננסח את השורה השנייה - משפט חופשי שמסביר מה את/ה *עושה* למי שעובד איתך (למשל: 'Helping teams ship products users actually need'). מה היית כותב/ת?"
+
+הצע 2-3 אפשרויות לשורה השנייה ותשאל מה מרגיש הכי נכון. הסבר: השורה הראשונה מסננת, השנייה נשארת בראש.
+
+## שלב 3: מבחן המעלית - הפסקה הפותחת
+
+שאל: "דמיין/י: סיימת ראיון מקצועי. המשרה מדהימה. יוצא/ת מהחדר, ובמעלית נכנס המנכ"ל. יש לך 100 שניות. מה את/ה אומר/ת?"
+
+עזור ללטש את התשובה ל-3-4 משפטים. לא רשימת טכנולוגיות, לא "20 years of experience in...". סיפור קצר, חד, שגורם לו להגיד "ספר/י לי עוד". זו הפסקה הפותחת.
+
+## שלב 4: מומחיות
+
+שאל: "מה הדבר שאת/ה עושה טוב מרוב האנשים בתחום שלך?"
+
+אם המשתמש מתקשה לענות - שאל שאלת עזר: "על מה עמיתים שלך היו אומרים 'תשאלו את [השם שלך], הוא/היא הכתובת לזה'?"
+
+הסבר: אנחנו שנות אור מהעידן שבו תואר גנרי היה מספיק. השוק מחפש אנשים שמבינים תחום ספציפי לעומק. המומחיות הזו חייבת לבלוט בקורות החיים.
+
+## שלב 5: הישגים - תפקיד אחרי תפקיד
+
+עבור על כל תפקיד (מהאחרון לראשון) ושאל:
+"מה השתנה בזכותך בתפקיד הזה?"
+
+דחוף לכיוון מספרים, אחוזים, תוצאות מדידות. אם המשתמש כותב "ניהלתי צוות של 5" - שאל שאלת המשך: "מה הצוות הזה השיג בזכותך?"
+
+הסבר: אף אחד לא רוצה לקרוא "Responsible for...". מעסיקים קונים הישגים - ראיות שאתם יודעים לייצר אימפקט.
+
+טיפ: נסה לזהות מה היו ה-KPIs הסבירים לכל תפקיד ושאל את המשתמש אם הוא יכול לכמת.
+
+## שלב 6: מסלול וקוהרנטיות
+
+שאל: "אם מישהו קורא את קורות החיים שלך מלמטה למעלה - האם הוא רואה קו ברור של התפתחות?"
+
+אם עבד בחברה תקופה ארוכה - וודא שזה מוצג כמסלול: קידומים, הרחבת אחריות, צמיחה. בתקופה של job hopping, יציבות בולטת לטובה.
+
+אם יש קפיצות - עזור למצוא את החוט המקשר.
+
+## שלב 7: מבחן הכנות
+
+שאל: "יש משהו בקורות החיים שאת/ה לא בטוח לגביו? משהו שמרגיש לא מדויק?"
+
+הזכר: שקרים תמיד מתגלים. כולל "פינות עגולות" כמו מיקום לא מדויק או תאריכים מטושטשים. עדיף סיפור כנה שמסופר בצורה חכמה.
+
+אם המשתמש לא בהולנד - הנח אותו לציין את המצב בכנות ולהסביר שיש תוכנית מעבר.
+
+## שלב 8: מה להוריד
+
+שאל: "יש משהו בקורות החיים שנמצא שם כי 'ככה עושים' ולא כי הוא באמת מוסיף ערך?"
+
+עזור לזהות: פרטים מיותרים (כתובת מלאה, ת.ז.), רשימות טכנולוגיות בלי הקשר, תפקידים ישנים שלא רלוונטיים, כל דבר שמנפח בלי לחזק.
+
+טיפ: מעסיק רציני לא מתקשר בלי תיאום - שולח מייל וקובע שיחה. מספר טלפון הוא לא חובה.
+
+הזכר: כמעט אף פעם קורות חיים לא נפלו כי היו קצרים מדי.
+
+## שלב 9: עיצוב ונגישות
+
+הסבר קצר: אין "best practices" אמיתיים לעיצוב. פונט, תמונה, צבעים - זה רעש. מה שכן קריטי:
+- שהמסמך נקי, קריא ועקבי
+- שהוא עובר מערכות סינון אוטומטיות (ATS) בלי בעיות
+- כותרות סטנדרטיות (Work Experience, Education, Skills)
+- ללא טבלאות או גרפיקה שעלולים לבלבל מערכות סינון
+
+שאל: "יש לך העדפה לגבי עיצוב? עמוד אחד או שניים? סגנון מסוים?"
+
+## שלב 10: הרכבה ויצירת קורות חיים מחודשים
+
+הודע למשתמש: "יופי, יש לי את כל מה שאני צריך. עכשיו אני מרכיב את הכל למסמך אחד."
+
+בנה קורות חיים מלאים ומלוטשים בשפת המקור הרלוונטית, לפי המבנה הבא:
+1. שם + כותרת כפולה
+2. פסקה פותחת (מבחן המעלית)
+3. ניסיון מקצועי - ממוקד הישגים, מסופר כמסלול צמיחה
+4. מומחיות ומיומנויות מפתח
+5. השכלה ופרטים רלוונטיים נוספים
+
+הצג את קורות החיים המחודשים, ואז תן:
+- ציון כללי (1-10) עם הסבר קצר
+- 3 דברים שהשתפרו משמעותית ביחס למקור
+- 1-2 דברים שעדיין שווה לחשוב עליהם
+
+## סיום
+
+סיים בהודעה הבאה:
+
+"מקווה שהתהליך הזה עזר לך לראות את קורות החיים שלך בעיניים אחרות.
+
+כמה דברים לזכור:
+✅ קורות החיים שלך עכשיו צריכים לחכות במגירה - לא להישלח לכל כיוון. תשקיעו בבניית קשרים עם האנשים הנכונים, ותחכו שיבקשו מכם אותם.
+✅ תבדקו שהם עוברים מערכות סינון אוטומטיות (ATS) - הנה כלי חינמי לבדיקה: https://www.jobscan.co/
+
+ואם בא לכם ליווי אישי ומעמיק יותר בתהליך - אלון מ-israelis.nl עזר להרבה אנשים לנחות על המשרה שחלמו עליה. אפשר לפנות אליו ישירות:
+https://wa.me/31644295691
+
+בהצלחה! 🎯"</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     ATS CHECK
+══════════════════════════════════ -->
+<section id="ats">
+  <div class="container">
+    <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--brand); margin-bottom: 12px;">🔍 בדיקת תאימות ATS</h3>
+    <div class="ats-card">
+      <p style="color:var(--text); margin-bottom: 0;">
+        אחרי שסיימתם לשדרג את קורות החיים, חשוב לוודא שהם עוברים מערכות סינון אוטומטיות (ATS) —
+        התוכנה שמסננת קורות חיים עוד לפני שמגייס רואה אותם. הנה כלי חינמי שממליצים עליו:
+      </p>
+      <a href="https://www.jobscan.co/" target="_blank" rel="noopener" class="btn btn-primary" style="align-self: flex-start; margin-top: 4px;">
+        בדקו את קורות החיים שלכם ב-Jobscan (חינם) ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     WANT MORE?
+══════════════════════════════════ -->
+<section id="more">
+  <div class="container">
+    <div class="more-card">
+      <h2>רוצים יותר?</h2>
+      <p style="margin: 12px auto 28px; max-width: 540px;">
+        הפרומפט הזה נותן בסיס מצוין, אבל לפעמים צריך מבט אנושי, אסטרטגיה מותאמת,
+        ומישהו שילווה אתכם בתהליך. אם אתם מרגישים שהגיע הזמן לגישה אחרת — אשמח לשמוע מכם.
+      </p>
+      <a
+        href="https://wa.me/31644295691?text=%D7%94%D7%99%D7%99%20%D7%90%D7%9C%D7%95%D7%9F%2C%20%D7%AA%D7%95%D7%93%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%A4%D7%A8%D7%95%D7%9E%D7%A4%D7%98%21%20%D7%9C%D7%9E%D7%93%D7%AA%D7%99%20%D7%94%D7%9E%D7%95%D7%9F%20%D7%A2%D7%9C%20%D7%A7%D7%95%D7%A8%D7%95%D7%AA%20%D7%94%D7%97%D7%99%D7%99%D7%9D%20%D7%A9%D7%9C%D7%99%20%D7%95%D7%A2%D7%9C%20%D7%94%D7%AA%D7%94%D7%9C%D7%99%D7%9A.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%AA%D7%99%D7%99%D7%A2%D7%A5%20%D7%91%D7%A0%D7%95%D7%A9%D7%90%20-%20%D7%90%D7%A4%D7%A9%D7%A8%20%D7%9C%D7%93%D7%91%D7%A8%3F"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-wa"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        דברו איתי בוואטסאפ
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     FOOTER
+══════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
+        הצטרפו לקהילת מוצאים עבודה בהולנד
+      </a>
+      <a href="https://israelis.nl" target="_blank" rel="noopener">israelis.nl</a>
+    </div>
+    <div style="margin-top:14px; font-size:0.8rem; opacity:0.5;">
+      &copy; <span id="year"></span> israelis.nl
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Current year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile nav toggle
+  function toggleNav() {
+    const toggle = document.getElementById('navToggle');
+    const links  = document.getElementById('navLinks');
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  }
+  function closeNav() {
+    document.getElementById('navToggle').classList.remove('open');
+    document.getElementById('navLinks').classList.remove('open');
+  }
+  // Close nav on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.site-nav')) closeNav();
+  });
+
+  // Copy prompt to clipboard
+  function copyPrompt() {
+    const text = document.getElementById('promptText').innerText;
+    const btn  = document.getElementById('copyBtn');
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(() => showCopied(btn));
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;top:-9999px;right:-9999px;opacity:0;';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showCopied(btn);
+      } catch (e) {
+        alert('לא הצלחנו להעתיק. סמנו את הטקסט ידנית.');
+      }
+      document.body.removeChild(ta);
+    }
+  }
+
+  function showCopied(btn) {
+    const original = btn.textContent;
+    btn.textContent = 'הועתק! ✓';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>
