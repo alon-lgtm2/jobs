@@ -1,37 +1,37 @@
 import type { Metadata } from "next";
-import { DM_Sans, Playfair_Display } from "next/font/google";
+import { Heebo, Frank_Ruhl_Libre } from "next/font/google";
 import "./globals.css";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+const heebo = Heebo({
+  variable: "--font-heebo",
+  subsets: ["hebrew", "latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
+const frankRuhl = Frank_Ruhl_Libre({
+  variable: "--font-frank",
+  subsets: ["hebrew", "latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Jobs for Israelis in the Netherlands | jobs.israelis.nl",
+  title: "מוצאים עבודה בהולנד | jobs.israelis.nl",
   description:
-    "The central hub for Israeli professionals seeking career opportunities in the Netherlands. Find jobs, resources, and community.",
+    "המרכז לישראלים שמחפשים עבודה בהולנד. משרות, משאבים, קהילה — הכל במקום אחד.",
   keywords: [
-    "Israeli jobs Netherlands",
-    "Israel Netherlands careers",
-    "Dutch jobs for Israelis",
-    "work in Netherlands",
-    "Israeli professionals",
+    "עבודה בהולנד",
+    "ישראלים בהולנד",
+    "משרות הולנד",
+    "עבודה באמסטרדם",
+    "קריירה בהולנד",
   ],
   openGraph: {
-    title: "Jobs for Israelis in the Netherlands",
+    title: "מוצאים עבודה בהולנד",
     description:
-      "Your gateway to career opportunities in the Netherlands. Join the Israeli professional community in NL.",
+      "המרכז לישראלים שמחפשים עבודה בהולנד. הצטרפו לקהילה שלנו.",
     url: "https://jobs.israelis.nl",
     siteName: "jobs.israelis.nl",
-    locale: "en_US",
+    locale: "he_IL",
     type: "website",
   },
 };
@@ -42,9 +42,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="he" dir="rtl">
       <body
-        className={`${dmSans.variable} ${playfair.variable} antialiased`}
+        className={`${heebo.variable} ${frankRuhl.variable} antialiased`}
       >
         {children}
       </body>
