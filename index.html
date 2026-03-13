@@ -659,6 +659,44 @@
       .prompt-body pre { font-size: 0.78rem; }
     }
 
+    /* ── Google Sign-In (package cards) ── */
+    .gsi-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+      cursor: default;
+    }
+    .gsi-label {
+      font-size: 0.78rem;
+      color: var(--brown-lt);
+      margin: 0;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .gsi-btn-container {
+      display: flex;
+      justify-content: center;
+      min-height: 44px;
+    }
+    /* Override Google button iframe to respect RTL layout */
+    .gsi-btn-container iframe { border-radius: 99px !important; }
+    .gsi-success {
+      display: none;
+      background: #FFF0E8;
+      border: 1px solid rgba(196,96,74,0.25);
+      border-radius: 12px;
+      padding: 14px 20px;
+      text-align: center;
+      color: var(--terra);
+      font-weight: 600;
+      font-size: 0.95rem;
+      width: 100%;
+    }
+    .gsi-success.visible { display: block; }
+    .gsi-btn-container.hidden { display: none; }
+
     /* ── Top Nav ── */
     .site-nav {
       position: sticky;
@@ -1120,10 +1158,11 @@ https://wa.me/31644295691
           <li>מעקב מסודר אחרי פניות, ראיונות והזדמנויות</li>
           <li>כל הסכום מתקזז בשדרוג לחבילה גבוהה יותר</li>
         </ul>
-        <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" target="_blank" rel="noopener" class="btn btn-outline">
-          ספרו לי עוד
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+        <div class="gsi-wrapper" onclick="setPkg('מפשילים שרוולים')">
+          <p class="gsi-label">הכניסה מאפשרת לאלון ליצור איתך קשר</p>
+          <div id="gsi-btn-0" class="gsi-btn-container"></div>
+          <div class="gsi-success" id="gsi-ok-0">✅ תודה! אלון יחזור אליך בקרוב.</div>
+        </div>
       </div>
 
       <!-- Package 2: צוללים למים (featured) -->
@@ -1142,10 +1181,11 @@ https://wa.me/31644295691
           <li>רשימת חברות ידידותיות לוויזה ורלוונטיות לתחום שלך</li>
           <li>30 יום ליווי אישי במייל ו-WhatsApp</li>
         </ul>
-        <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" target="_blank" rel="noopener" class="btn btn-outline">
-          ספרו לי עוד
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+        <div class="gsi-wrapper" onclick="setPkg('צוללים למים')">
+          <p class="gsi-label">הכניסה מאפשרת לאלון ליצור איתך קשר</p>
+          <div id="gsi-btn-1" class="gsi-btn-container"></div>
+          <div class="gsi-success" id="gsi-ok-1">✅ תודה! אלון יחזור אליך בקרוב.</div>
+        </div>
       </div>
 
       <!-- Package 3: מוצאים עבודה! -->
@@ -1165,10 +1205,11 @@ https://wa.me/31644295691
           <li>בניית קשרים אסטרטגית עם אנשים רלוונטיים בתעשייה</li>
           <li>מפת השתלבות אישית לתחילת עבודה</li>
         </ul>
-        <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" target="_blank" rel="noopener" class="btn btn-outline">
-          ספרו לי עוד
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+        <div class="gsi-wrapper" onclick="setPkg('מוצאים עבודה!')">
+          <p class="gsi-label">הכניסה מאפשרת לאלון ליצור איתך קשר</p>
+          <div id="gsi-btn-2" class="gsi-btn-container"></div>
+          <div class="gsi-success" id="gsi-ok-2">✅ תודה! אלון יחזור אליך בקרוב.</div>
+        </div>
       </div>
 
     </div>
@@ -1640,6 +1681,81 @@ https://wa.me/31644295691
       btn.classList.remove('copied');
     }, 2000);
   }
+
+  // ── Google Sign-In + Web3Forms leads ──────────────────────────────────
+  // ⚙️  Replace these two values before going live:
+  var GSI_CLIENT_ID   = 'YOUR_CLIENT_ID.apps.googleusercontent.com';
+  var WEB3FORMS_KEY   = 'YOUR_WEB3FORMS_KEY';  // free at web3forms.com
+  // ─────────────────────────────────────────────────────────────────────
+
+  var _pkg = '';   // set by setPkg() on wrapper click, read by callback
+
+  function setPkg(name) { _pkg = name; }
+
+  function loadGsi() {
+    return new Promise(function(resolve) {
+      if (window.google && window.google.accounts && window.google.accounts.id) {
+        resolve(); return;
+      }
+      var s = document.createElement('script');
+      s.src = 'https://accounts.google.com/gsi/client';
+      s.async = true; s.defer = true;
+      s.onload = resolve;
+      document.head.appendChild(s);
+    });
+  }
+
+  async function onGsiCredential(response) {
+    // Decode JWT payload
+    var b64 = response.credential.split('.')[1]
+                .replace(/-/g, '+').replace(/_/g, '/');
+    var user = JSON.parse(atob(b64));
+
+    // Find which card this belongs to and show success
+    var pkgs = ['מפשילים שרוולים', 'צוללים למים', 'מוצאים עבודה!'];
+    var idx  = pkgs.indexOf(_pkg);
+    if (idx !== -1) {
+      document.getElementById('gsi-btn-' + idx).classList.add('hidden');
+      document.getElementById('gsi-ok-'  + idx).classList.add('visible');
+    }
+
+    // Send lead to Web3Forms (no backend needed)
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject:    'ליד חדש: ' + (_pkg || 'לא ידוע') + ' — ' + user.name,
+          from_name:  user.name,
+          email:      user.email,
+          'חבילה':   _pkg || 'לא ידוע',
+          name:       user.name,
+        })
+      });
+    } catch(e) { /* fail silently — success message already shown */ }
+  }
+
+  loadGsi().then(function() {
+    window.google.accounts.id.initialize({
+      client_id: GSI_CLIENT_ID,
+      callback:  onGsiCredential,
+      ux_mode:   'popup',
+    });
+    [0, 1, 2].forEach(function(i) {
+      var el = document.getElementById('gsi-btn-' + i);
+      if (el) {
+        window.google.accounts.id.renderButton(el, {
+          theme:  'outline',
+          size:   'large',
+          shape:  'pill',
+          width:  240,
+          locale: 'iw',   // Hebrew label
+          text:   'continue_with',
+        });
+      }
+    });
+  });
 </script>
 
 </body>
