@@ -2,7 +2,7 @@
 
 ## Overview
 
-A Hebrew-language (RTL) landing page and resource hub for Israeli job seekers relocating to the Netherlands. Created by Alon, who has spent 8+ years helping Israelis integrate professionally in the Dutch job market.
+A Hebrew-language (RTL) platform for Israeli job seekers relocating to the Netherlands. Offers free AI resume tools, a blog with practical articles, and paid coaching services. Created by Alon, 8+ years helping Israelis integrate professionally in the Dutch job market.
 
 **Live URL:** https://jobs.israelis.nl
 **Staging URL:** https://jobs-staging-x4ws.onrender.com/
@@ -15,213 +15,273 @@ A Hebrew-language (RTL) landing page and resource hub for Israeli job seekers re
 | Layer | Technology |
 |-------|-----------|
 | Framework | Next.js 16.1.6 + React 19.2.3 + TypeScript 5 |
-| Styling | Inline CSS custom properties (no Tailwind in production HTML) |
-| Fonts | Heebo (body) + Frank Ruhl Libre (headings) — Google Fonts |
+| Styling | Tailwind CSS 4 (globals.css) + inline CSS in HTML files |
+| Fonts | Heebo (body + headings) — Google Fonts, weights 300–800 |
 | Deployment | Render (Node 20, `render.yaml`) |
-| Form Backend | Formspree (ID: `xzdjglaz`) |
-| Messaging | WhatsApp deep links (+31644295691) |
+| Contact Form | Formspree (ID: `xzdjglaz`) |
 | Lead Capture | Google Identity Services (GSI) + Web3Forms |
+| Messaging | WhatsApp deep links (+31644295691) |
 
 ---
 
 ## Architecture
 
-The site is **static**. A single `index.html` file (~1500+ lines) is served via a Next.js API route handler (`src/app/route.ts`) with `force-static` caching. There is no database, authentication, or server-side logic. All HTML, CSS, and JavaScript are inline in `index.html`.
+The site is **static-first**. Pre-built HTML files are served through Next.js API route handlers with `force-static` caching. There is no database, no auth, and no server-side logic beyond serving HTML.
+
+### How routing works
+
+Every page follows the same pattern — a `route.ts` file reads an HTML file from the project root and returns it:
+
+```typescript
+// Example: src/app/blog/ageism-in-tech/route.ts
+import fs from "fs";
+import path from "path";
+
+export const dynamic = "force-static";
+
+export function GET() {
+  const filePath = path.join(process.cwd(), "blog/ageism-in-tech.html");
+  const html = fs.readFileSync(filePath, "utf-8");
+  return new Response(html, {
+    headers: { "Content-Type": "text/html; charset=utf-8" },
+  });
+}
+```
+
+### Two styling layers
+
+1. **`globals.css`** — Tailwind v4 theme variables, animations, and utilities. Used by `layout.tsx` as the Next.js wrapper.
+2. **Inline `<style>` in each HTML file** — Each HTML page has its own `:root` variables and complete CSS. The HTML files are self-contained and do not depend on Tailwind classes.
+
+Both layers currently use the same blue/navy professional palette (see [Design System](#design-system) below).
+
+---
+
+## File Structure
 
 ```
 jobs-repo/
-├── index.html               # Main page (all HTML/CSS/JS inline)
-├── src/app/
-│   ├── layout.tsx            # Root layout (fonts, metadata, RTL)
-│   ├── route.ts              # GET handler serving index.html
-│   └── globals.css           # Tailwind imports + design tokens
-├── public/                   # Static SVG assets
-├── package.json              # Dependencies
-├── next.config.ts            # Next.js config (empty)
-├── postcss.config.mjs        # Tailwind PostCSS plugin
-├── render.yaml               # Render deployment config
-├── SITE-DOCUMENTATION.md     # This file
-└── tsconfig.json             # TypeScript config
+├── index.html                  # Homepage (~1,081 lines, self-contained HTML/CSS/JS)
+├── blog.html                   # Blog index page
+├── blog/                       # Blog post HTML files (16 articles)
+│   ├── ageism-in-tech.html
+│   ├── cv-strategy.html
+│   ├── dba-law-freelancers.html
+│   ├── financial-planning.html
+│   ├── fintech-networking.html
+│   ├── job-market-stats.html
+│   ├── job-search-strategy.html
+│   ├── military-service-cv.html
+│   ├── motivation-ant-cricket.html
+│   ├── referrals.html
+│   ├── rejection-to-opportunity.html
+│   ├── relocation-tips.html
+│   ├── salary-negotiation.html
+│   ├── seder-map.html
+│   ├── thirty-percent-ruling.html
+│   └── visa-permanent-residency.html
+├── prompts.html                # Prompts index page
+├── prompts/                    # Prompt tool HTML files
+│   └── cv-upgrade.html         # AI CV coaching prompt (~34KB)
+├── src/
+│   └── app/
+│       ├── layout.tsx           # Root layout (Heebo font, metadata, RTL)
+│       ├── globals.css          # Tailwind v4 theme + animations
+│       ├── route.ts             # GET → serves index.html
+│       ├── favicon.ico
+│       ├── blog/
+│       │   ├── route.ts                     # GET → serves blog.html
+│       │   ├── ageism-in-tech/route.ts      # GET → serves blog/ageism-in-tech.html
+│       │   ├── cv-strategy/route.ts
+│       │   ├── dba-law-freelancers/route.ts
+│       │   ├── financial-planning/route.ts
+│       │   ├── fintech-networking/route.ts
+│       │   ├── job-market-stats/route.ts
+│       │   ├── job-search-strategy/route.ts
+│       │   ├── military-service-cv/route.ts
+│       │   ├── motivation-ant-cricket/route.ts
+│       │   ├── referrals/route.ts
+│       │   ├── rejection-to-opportunity/route.ts
+│       │   ├── relocation-tips/route.ts
+│       │   ├── salary-negotiation/route.ts
+│       │   ├── seder-map/route.ts
+│       │   ├── thirty-percent-ruling/route.ts
+│       │   └── visa-permanent-residency/route.ts
+│       └── prompts/
+│           ├── route.ts                     # GET → serves prompts.html
+│           └── cv-upgrade/route.ts          # GET → serves prompts/cv-upgrade.html
+├── public/                     # Static assets
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── .claude/
+│   └── launch.json             # Dev server config (port 3000)
+├── package.json
+├── package-lock.json
+├── next.config.ts              # Empty (default Next.js config)
+├── tsconfig.json               # Strict, ES2017, path alias @/* → ./src/*
+├── postcss.config.mjs          # Tailwind v4 PostCSS plugin
+├── eslint.config.mjs           # Flat config, next/core-web-vitals + TS
+├── render.yaml                 # Render deployment config
+├── design-preview.html         # Design variant mockups (reference only)
+└── SITE-DOCUMENTATION.md       # This file
 ```
 
 ---
 
-## Page Sections
+## Pages & Routes
 
-The site is a single page with anchor-based navigation. Sections in order:
-
-| # | Section | ID | Description |
-|---|---------|-----|-------------|
-| 1 | Hero | `#hero` | Main headline, CTA button, quick nav links |
-| 2 | Why | `#why` | Alon's personal story and motivation |
-| 3 | How-To | `#how` | Detailed 3-step guide + tip/note boxes |
-| 4 | Prompts & Links | `#useful-links` | Hub containing all sub-resources (see below) |
-| 4a | — How It Works | *(no anchor)* | Mini 3-card visual steps grid |
-| 4b | — AI Resume Prompt | `#prompt-section` | Full AI coaching prompt with copy button |
-| 4c | — ATS Check | `#ats` | ATS explanation + Jobscan link |
-| 4d | — Want More? | `#more` | WhatsApp CTA card — nested inside #useful-links |
-| 5 | Services | `#services` | 3 coaching package tiers with Google Sign-In CTAs |
-| 6 | Blog | `#blog` | 16 article cards (external links) |
-| 7 | Contact | `#contact` | Contact form + WhatsApp/Facebook/israelis.nl links |
-| 8 | Footer | — | Community links + copyright |
+| URL | Route file | Serves | Description |
+|-----|-----------|--------|-------------|
+| `/` | `src/app/route.ts` | `index.html` | Homepage — hero, services, blog preview, contact |
+| `/blog` | `src/app/blog/route.ts` | `blog.html` | Blog index with all article cards |
+| `/blog/[slug]` | `src/app/blog/[slug]/route.ts` | `blog/[slug].html` | Individual blog post |
+| `/prompts` | `src/app/prompts/route.ts` | `prompts.html` | Prompt tools library |
+| `/prompts/cv-upgrade` | `src/app/prompts/cv-upgrade/route.ts` | `prompts/cv-upgrade.html` | AI CV coaching prompt tool |
 
 ---
 
-## Section Details
+## Homepage Sections (`index.html`)
 
-### Sticky Nav
-- Frosted-glass bar (`backdrop-filter: blur(18px)`) fixed at top
-- Logo: `israelis.nl jobs` (links to `#hero`)
-- Links: פרומפטים | איך משתמשים | ליווי אישי | מאמרים | צרו קשר
-- Pill CTA: "התחילו עכשיו" → `#prompt-section`
-- Mobile: hamburger toggle, animated open/close via `toggleNav()` / `closeNav()`
-
-### Hero (`#hero`)
-- Badge: "🇮🇱 → 🇳🇱 מוצאים עבודה בהולנד"
-- H1: "שדרגו את קורות החיים שלכם בעזרת AI"
-- Quick nav: לינקים ופרומפטים | ליווי אישי | מאמרים | צרו קשר
-- Primary CTA scrolls to `#prompt-section`
-
-### Why (`#why`)
-- First-person narrative from Alon
-- Right-bordered story box (terracotta accent)
-
-### How-To (`#how`)
-- 3 numbered steps (copy → open AI chat → paste & follow)
-- Tip box: use voice input for more natural results
-- Note box: use paid/advanced AI models for better quality
-
-### Prompts & Links (`#useful-links`)
-The main resource hub. Contains four sub-sections in this order:
-
-**How It Works (mini steps)**
-- 3-card horizontal grid (`hiw-grid` / `hiw-card`)
-- Step 1: העתיקו את הפרומפט
-- Step 2: ענו על השאלות
-- Step 3: קבלו CV מוכן
-
-**AI Resume Prompt (`#prompt-section`)**
-- Scrollable container (max-height 420px)
-- Dark brown header bar with "העתק פרומפט" button
-- 10-step AI coaching prompt:
-  1. Welcome & input options
-  2. Professional story discovery
-  3. Title + tagline
-  4. Elevator pitch (100 seconds)
-  5. Core expertise
-  6. Achievements per role
-  7. Career path coherence
-  8. Honesty check
-  9. Design & ATS compatibility
-  10. Final resume assembly + score
-
-**ATS Check (`#ats`)**
-- Card explaining Applicant Tracking Systems
-- External link to Jobscan (free tool)
-
-**Want More? (`#more`)**
-- Gradient card (brown → terracotta), nested inside `#useful-links`
-- WhatsApp CTA with pre-filled Hebrew message
-
-### Services (`#services`)
-Three coaching packages, each with a Google Sign-In CTA:
-
-| Package | Emoji | Highlight |
-|---------|-------|-----------|
-| מפשילים שרוולים (Rolling Up Sleeves) | 🛠️ | DIY toolkit, webinar, app access |
-| צוללים למים (Diving In) | 🤿 | **Featured** — 1:1 coaching, resume rewrite, 30-day support |
-| מוצאים עבודה! (Finding Work!) | 🚀 | Full 3-month coaching, unlimited calls |
-
-Each card has a GSI (Google Sign-In) button. On sign-in, the user's name/email and chosen package are submitted to Web3Forms. See [Google Sign-In Integration](#google-sign-in-integration) below.
-
-### Blog (`#blog`)
-- 16 article cards in responsive grid
-- Topics: job search strategy, ageism, salary negotiation, freelancers/DBA, financial planning, referrals, 30% ruling, military service in CVs, networking, motivation, relocation, visa/residency
-- Links to Facebook group posts and LinkedIn articles
-
-### Contact (`#contact`)
-- Two-column layout (info + form)
-- Contact links: WhatsApp, Facebook group, israelis.nl
-- Formspree-powered form (name, email, message)
-- Success state shown after submission
+| # | Section | Anchor | Description |
+|---|---------|--------|-------------|
+| 1 | Sticky Nav | — | Frosted-glass bar, hamburger on mobile (<640px) |
+| 2 | Hero | `#hero` | Headline, CTA → prompt section, quick nav links |
+| 3 | Why | `#why` | Alon's personal story |
+| 4 | How-To | `#how` | 3-step guide for using the AI prompt |
+| 5 | Prompts & Links | `#useful-links` | Resource hub (sub-sections below) |
+| 5a | — How It Works | — | 3-card mini steps grid |
+| 5b | — AI Resume Prompt | `#prompt-section` | Full 10-step AI prompt with copy button |
+| 5c | — ATS Check | `#ats` | ATS explainer + Jobscan link |
+| 5d | — Want More? | `#more` | WhatsApp CTA card |
+| 6 | Services | `#services` | 3 coaching tiers with Google Sign-In CTAs |
+| 7 | Blog | `#blog` | 16 article cards |
+| 8 | Contact | `#contact` | Contact form + WhatsApp/Facebook/israelis.nl |
+| 9 | Footer | — | Community links + auto-updating copyright year |
 
 ---
 
-## Design System — Warm Editorial
+## Design System
 
-The site uses a **Warm Editorial** aesthetic: cream/terracotta/brown palette, Frank Ruhl Libre serif headings, generous whitespace.
+### Color Palette (CSS Variables)
 
-### Colors (CSS Variables)
+The HTML files define their own `:root` variables. Current palette is **blue/navy professional**:
+
 ```css
---white:    #FFFFFF
---gray-bg:  #F0EAE0       /* Sand background */
---brand:    #3D2B1F       /* Brown (remapped from navy) */
---blue:     #C4604A       /* Terracotta (remapped from blue) */
---blue-lt:  #FFF0E8       /* Peach (remapped from light blue) */
---wa:       #25D366       /* WhatsApp green */
---wa-dark:  #1da851
---text:     #3D2B1F
---muted:    #6B5344
---border:   rgba(61,43,31,0.12)
---radius:   16px
---max:      800px         /* Container max-width */
---cream:    #FAF6F0       /* Page background */
---sand:     #F0EAE0       /* Alternate section bg */
---terra:    #C4604A       /* Terracotta — primary accent */
---terra-lt: #E8A090
---terra-bg: rgba(196,96,74,0.06)
---peach:    #FFF0E8
---brown:    #3D2B1F       /* Primary dark */
---brown-mid:#6B5344
---brown-lt: #A08878
---line:     rgba(61,43,31,0.1)
+:root {
+  --white:    #FFFFFF;
+  --gray-bg:  #F8F9FA;           /* Surface / alternate section bg */
+  --brand:    #1a3a5c;           /* Navy — primary dark */
+  --blue:     #2563EB;           /* Primary accent / CTA */
+  --blue-lt:  #EFF6FF;           /* Light blue background */
+  --wa:       #25D366;           /* WhatsApp green */
+  --wa-dark:  #1da851;
+  --text:     #1a1a1a;           /* Body text */
+  --muted:    #6b7280;           /* Secondary text */
+  --border:   #E5E7EB;
+  --radius:   12px;
+  --max:      800px;             /* Container max-width */
+  --cream:    #FFFFFF;           /* Page background */
+  --sand:     #F8F9FA;
+  --terra:    #2563EB;           /* Accent (aliased to blue) */
+  --terra-lt: #93bbfd;
+  --terra-bg: rgba(37,99,235,0.06);
+  --peach:    #EFF6FF;
+  --brown:    #1a3a5c;           /* Aliased to brand navy */
+  --brown-mid:#6b7280;
+  --brown-lt: #9ca3af;
+  --line:     #E5E7EB;
+}
 ```
 
-> **Note:** The legacy variable names (`--brand`, `--blue`, `--blue-lt`) are kept as-is because inline `style=""` attributes throughout the HTML body reference them. They are remapped to warm equivalents in `:root`.
+> **Note on variable naming:** Legacy names like `--terra`, `--brown`, `--peach` exist from a prior "warm editorial" design iteration. They are currently aliased to the blue palette values. If redesigning, update these variables in every HTML file's `<style>` block — they are NOT centralized.
+
+### globals.css Variables (Tailwind layer)
+
+```css
+:root {
+  --background: #FFFFFF;
+  --foreground: #1a1a1a;
+  --blue-deep:  #1a3a5c;
+  --blue-mid:   #2563EB;
+  --blue-light: #EFF6FF;
+  --cream:      #F8F9FA;
+  --cream-dark: #E5E7EB;
+  --slate:      #6b7280;
+  --slate-light:#9ca3af;
+}
+```
 
 ### Typography
-- **Headings (h1/h2/h3):** Frank Ruhl Libre (serif), weights 300–900
-- **Body:** Heebo (Hebrew-optimized sans-serif), weights 300–800
+
+- **Font:** Heebo (Hebrew-optimized sans-serif), weights 300–800
 - **Direction:** RTL (`<html lang="he" dir="rtl">`)
+- **H1:** `clamp(1.9rem, 5vw, 2.6rem)`, weight 800, color `--brand`
+- **H2:** `clamp(1.4rem, 4vw, 1.8rem)`, weight 700, color `--brand`
+- **H3:** `1.1rem`, weight 700
+- **Body:** 16px base, line-height 1.7
 
 ### Responsive Breakpoints
-- `max-width: 700px` — contact grid stacks, blog grid becomes single column
-- `max-width: 640px` — mobile nav hamburger activates
-- `max-width: 600px` — reduced padding, full-width buttons, smaller prompt text, `hiw-grid` becomes single column
+
+| Breakpoint | What changes |
+|------------|-------------|
+| `max-width: 768px` | Blog grid → single column, mobile nav hamburger activates |
+| `max-width: 640px` | Sticky nav hamburger, reduced padding |
+| `max-width: 600px` | Full-width buttons, smaller prompt text, stacked grids |
+
+### Animations (globals.css)
+
+| Name | Duration | Use |
+|------|----------|-----|
+| `fadeInUp` | 0.8s ease-out | Section entrance |
+| `fadeIn` | 0.6s ease-out | General fade |
+| `slideInLeft` / `slideInRight` | 0.8s ease-out | Directional entrance |
+| `float` | 6s infinite | Decorative floating elements |
+| `pulse-soft` | opacity 0.6→1 | Subtle pulsing |
+| `marquee` | 30s linear infinite | Scrolling ticker |
+
+Stagger delays: `.delay-100` through `.delay-800` (100ms increments).
 
 ---
 
-## JavaScript Features
+## JavaScript Features (index.html)
 
-1. **Copy-to-Clipboard** — `copyPrompt()` uses `navigator.clipboard` with `execCommand` fallback; shows "הועתק!" state via `showCopied()`
-2. **Contact Form** — `handleFormSubmit()` posts to Formspree, shows success/error states
-3. **Dynamic Year** — Footer copyright year auto-updates
-4. **Nav Toggle** — `toggleNav()` / `closeNav()` for mobile hamburger; outside-click listener closes menu
-5. **Google Sign-In** — `loadGsi()` lazy-loads GSI script; `setPkg()` tracks which package was clicked; `onGsiCredential()` decodes JWT and submits lead to Web3Forms
+| Feature | Function(s) | Description |
+|---------|------------|-------------|
+| Copy Prompt | `copyPrompt()`, `showCopied()` | Copies AI prompt via `navigator.clipboard` with `execCommand` fallback |
+| Contact Form | `handleFormSubmit()` | Posts to Formspree, shows success/error states |
+| Mobile Nav | `toggleNav()`, `closeNav()` | Hamburger menu with outside-click listener |
+| Dynamic Year | Inline | Footer copyright year auto-updates |
+| Google Sign-In | `loadGsi()`, `setPkg()`, `onGsiCredential()` | See [GSI Integration](#google-sign-in-integration) |
 
 ---
 
 ## Google Sign-In Integration
 
-Each service package card has a Google Sign-In button that captures the visitor's name and email and sends a lead notification to Alon via Web3Forms.
+Each service card has a Google Sign-In button that captures the visitor's name/email and sends a lead to Alon via Web3Forms.
 
-### How it works
-1. `loadGsi()` lazily appends the GSI script on first call
-2. `setPkg(name)` is called via `onclick` on the `.gsi-wrapper` div — stores which package was selected in `window._pkg`
-3. `google.accounts.id.initialize()` registers `onGsiCredential` as the callback
-4. Three pill-shaped Hebrew-locale buttons are rendered via `renderButton()` into `#gsi-btn-0/1/2`
-5. On sign-in, `onGsiCredential` decodes the JWT to extract `name` and `email`, posts to Web3Forms, and shows a per-card success state
+### Flow
 
-### Configuration (⚠️ requires real values)
-```js
-var GSI_CLIENT_ID = 'YOUR_CLIENT_ID.apps.googleusercontent.com';
-var WEB3FORMS_KEY = 'YOUR_WEB3FORMS_KEY';
+1. `loadGsi()` lazily loads the GSI script on first call
+2. `setPkg(name)` stores which package was clicked in `window._pkg`
+3. `google.accounts.id.initialize()` registers `onGsiCredential` as callback
+4. Three pill-shaped Hebrew-locale buttons render into `#gsi-btn-0/1/2`
+5. On sign-in, JWT is decoded for `name`/`email`, posted to Web3Forms, per-card success shown
+
+### Credentials (in index.html)
+
+```
+GSI_CLIENT_ID = '225623142977-oqtmjp8lr7kt3n2b53ftl37801391021.apps.googleusercontent.com'
+WEB3FORMS_KEY = '4fbcbbf1-0fe6-4f59-986d-618f42b0df80'
 ```
 
-- **GSI_CLIENT_ID** — create at [Google Cloud Console](https://console.cloud.google.com/) → APIs & Services → Credentials → OAuth 2.0 Client ID (Web application). Add your domain as an authorized JavaScript origin.
-- **WEB3FORMS_KEY** — get free at [web3forms.com](https://web3forms.com/). Leads arrive in Alon's inbox.
+- **GSI_CLIENT_ID** — [Google Cloud Console](https://console.cloud.google.com/) → APIs & Services → Credentials → OAuth 2.0 Client ID. Add domain as authorized JavaScript origin.
+- **WEB3FORMS_KEY** — [web3forms.com](https://web3forms.com/). Leads arrive in Alon's inbox.
 
-### HTML structure per card
+### HTML Structure Per Card
+
 ```html
 <div class="gsi-wrapper" onclick="setPkg('חבילה X')">
   <p class="gsi-label">הכניסה מאפשרת לאלון ליצור איתך קשר</p>
@@ -234,53 +294,152 @@ var WEB3FORMS_KEY = 'YOUR_WEB3FORMS_KEY';
 
 ## External Integrations
 
-| Service | Purpose | ID/URL |
+| Service | Purpose | Config |
 |---------|---------|--------|
 | Formspree | Contact form backend | Form ID: `xzdjglaz` |
-| WhatsApp | Direct messaging CTA | +31644295691 |
-| Jobscan | ATS resume checking | https://www.jobscan.co/ |
-| Web3Forms | Lead capture from GSI sign-in | Access key: replace placeholder |
-| Google Identity Services | Sign-in buttons on service cards | Client ID: replace placeholder |
+| WhatsApp | Direct messaging CTA | +31644295691, pre-filled Hebrew messages |
+| Web3Forms | Lead capture from GSI | Access key: `4fbcbbf1-0fe6-4f59-986d-618f42b0df80` |
+| Google Identity Services | Sign-in on service cards | Client ID: `225623142977-...` |
+| Jobscan | ATS resume checking | External link to https://www.jobscan.co/ |
 | Facebook Group | Community | Group ID: `1550032319015043` |
 | israelis.nl | Parent site | https://israelis.nl |
 
 ---
 
-## Development
+## SEO & Metadata
 
-```bash
-# Install dependencies
-npm install
+### index.html (in `<head>`)
 
-# Local preview (static file server, no build needed)
-# Uses .claude/launch.json — start via Claude Code preview
-npx serve . -p 4000 -s
-
-# Run Next.js dev server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
+```
+Title: עבודה בהולנד לישראלים | israelis.nl jobs
+Description: הפלטפורמה של הישראלים בהולנד לחיפוש עבודה. כלי AI חינמיים, מאמרים מעשיים וליווי אישי מנוסה.
+OG Title/Description: same as above
+OG Type: website
+Language: he (Hebrew), Direction: RTL
 ```
 
-## Deployment
+### layout.tsx (Next.js metadata — used for non-HTML routes)
 
-Deployed on **Render** via `render.yaml`:
-- Service: `jobs-staging` (web)
-- Branch: `staging`
-- Runtime: Node 20
-- Build: `npm install && npm run build`
-- Start: `npm start`
-- Staging URL: https://jobs-staging-x4ws.onrender.com/
+```
+Title: מוצאים עבודה בהולנד | jobs.israelis.nl
+Description: המרכז לישראלים שמחפשים עבודה בהולנד. משרות, משאבים, קהילה — הכל במקום אחד.
+Keywords: עבודה בהולנד, ישראלים בהולנד, משרות הולנד, עבודה באמסטרדם, קריירה בהולנד
+OG: locale he_IL, type website, url https://jobs.israelis.nl
+```
 
 ---
 
-## SEO & Metadata
+## How To: Add a New Blog Post
 
-- `<title>`: שדרגו את קורות החיים שלכם | israelis.nl
-- `<meta description>`: פרומפט חכם ומונחה AI לבניית קורות חיים מקצועיים - חינם. מותאם לשוק העבודה בהולנד.
-- Open Graph: title, description, type (website)
-- Language: `he` (Hebrew), direction: RTL
+1. **Create the HTML file:** `blog/my-new-post.html`
+   - Copy structure from an existing post (e.g., `blog/cv-strategy.html`)
+   - Include full inline CSS (each post is self-contained)
+   - Keep nav links consistent with other pages
+
+2. **Create the route handler:** `src/app/blog/my-new-post/route.ts`
+   ```typescript
+   import fs from "fs";
+   import path from "path";
+
+   export const dynamic = "force-static";
+
+   export function GET() {
+     const filePath = path.join(process.cwd(), "blog/my-new-post.html");
+     const html = fs.readFileSync(filePath, "utf-8");
+     return new Response(html, {
+       headers: { "Content-Type": "text/html; charset=utf-8" },
+     });
+   }
+   ```
+
+3. **Add a card to `blog.html`** — Add the article card to the blog grid.
+
+4. **Optionally update `index.html`** — Add a preview card in the `#blog` section if desired.
+
+## How To: Add a New Prompt Tool
+
+Same pattern as blog posts:
+
+1. Create `prompts/my-tool.html`
+2. Create `src/app/prompts/my-tool/route.ts` pointing to that HTML file
+3. Add a card to `prompts.html`
+
+## How To: Change the Design / Color Scheme
+
+Because each HTML file has its own inline `<style>` with `:root` variables, a design change requires updating:
+
+1. **Every HTML file's `:root` block** — `index.html`, `blog.html`, all `blog/*.html`, `prompts.html`, all `prompts/*.html`
+2. **`globals.css`** — The Tailwind theme variables (for the Next.js layout wrapper)
+
+The variable names in HTML files (e.g., `--brand`, `--blue`, `--terra`) are used throughout inline `style=""` attributes, so renaming them would also require updating all references in the HTML body.
+
+> **Scaling tip:** If the number of pages grows significantly, consider extracting the shared CSS into a single stylesheet served from `public/` to avoid maintaining duplicate `:root` blocks across 20+ files.
+
+---
+
+## Development
+
+### Prerequisites
+
+- Node.js 20+
+- npm
+
+### Setup
+
+```bash
+git clone https://github.com/alon-lgtm2/jobs.git
+cd jobs
+npm install
+```
+
+### Run locally
+
+```bash
+npm run dev          # Next.js dev server on http://localhost:3000
+npx serve . -p 4000 -s   # Static file server (for testing HTML directly)
+```
+
+### Build & deploy
+
+```bash
+npm run build        # Production build
+npm start            # Start production server
+npm run lint         # ESLint check
+```
+
+### Configuration
+
+| File | Purpose |
+|------|---------|
+| `next.config.ts` | Next.js config (currently empty/default) |
+| `tsconfig.json` | TypeScript strict mode, ES2017 target, `@/*` path alias |
+| `postcss.config.mjs` | Tailwind v4 PostCSS plugin |
+| `eslint.config.mjs` | Flat config — next/core-web-vitals + TypeScript |
+| `render.yaml` | Render deployment — `jobs-staging`, Node 20 |
+| `.claude/launch.json` | Claude Code dev server config (port 3000) |
+
+---
+
+## Deployment (Render)
+
+Configured in `render.yaml`:
+
+- **Service name:** `jobs-staging`
+- **Type:** Web service, Node.js runtime
+- **Branch:** `staging`
+- **Build:** `npm install && npm run build`
+- **Start:** `npm start`
+- **Node version:** 20
+- **Staging URL:** https://jobs-staging-x4ws.onrender.com/
+
+---
+
+## Known Considerations for Scaling
+
+1. **Duplicated CSS** — Each HTML file is self-contained with its own `<style>` block. A shared stylesheet would reduce maintenance as pages grow.
+2. **Legacy variable names** — `--terra`, `--brown`, `--peach` are aliases from a prior design. Consider cleaning up if doing a redesign.
+3. **No templating** — Blog/prompt pages are hand-authored HTML. A markdown → HTML pipeline or CMS integration would help if content volume grows significantly.
+4. **No dynamic routes** — Each blog post requires both an HTML file and a route handler. A catch-all `[slug]/route.ts` could reduce boilerplate.
+5. **Inline JavaScript** — All JS is in `index.html`. Extracting to `public/` would improve cacheability and separation of concerns.
+6. **No analytics** — No Google Analytics, Plausible, or similar tracking is currently installed.
+7. **No sitemap or robots.txt** — Adding these would improve SEO discoverability.
