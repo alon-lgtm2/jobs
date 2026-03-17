@@ -82,7 +82,8 @@ jobs-repo/
 │   └── visa-permanent-residency.html
 ├── prompts.html                # Prompts index page
 ├── prompts/                    # Prompt tool HTML files
-│   └── cv-upgrade.html         # AI CV coaching prompt (~34KB)
+│   ├── cv-upgrade.html         # AI CV coaching prompt (~34KB)
+│   └── target-companies.html   # Deep Research company targeting prompt
 ├── src/
 │   └── app/
 │       ├── layout.tsx           # Root layout (Heebo font, metadata, RTL)
@@ -109,7 +110,8 @@ jobs-repo/
 │       │   └── visa-permanent-residency/route.ts
 │       └── prompts/
 │           ├── route.ts                     # GET → serves prompts.html
-│           └── cv-upgrade/route.ts          # GET → serves prompts/cv-upgrade.html
+│           ├── cv-upgrade/route.ts          # GET → serves prompts/cv-upgrade.html
+│           └── target-companies/route.ts    # GET → serves prompts/target-companies.html
 ├── public/                     # Static assets
 │   ├── file.svg
 │   ├── globe.svg
@@ -140,6 +142,7 @@ jobs-repo/
 | `/blog/[slug]` | `src/app/blog/[slug]/route.ts` | `blog/[slug].html` | Individual blog post |
 | `/prompts` | `src/app/prompts/route.ts` | `prompts.html` | Prompt tools library |
 | `/prompts/cv-upgrade` | `src/app/prompts/cv-upgrade/route.ts` | `prompts/cv-upgrade.html` | AI CV coaching prompt tool |
+| `/prompts/target-companies` | `src/app/prompts/target-companies/route.ts` | `prompts/target-companies.html` | Deep Research company targeting prompt |
 
 ---
 
@@ -147,7 +150,7 @@ jobs-repo/
 
 | # | Section | Anchor | Description |
 |---|---------|--------|-------------|
-| 1 | Sticky Nav | — | Frosted-glass bar, hamburger on mobile (<640px) |
+| 1 | Sticky Nav | — | Frosted-glass bar, hamburger on mobile (<640px). Links: AI, ליווי אישי, מאמרים, קישורים שימושיים, צרו קשר, התחילו עכשיו |
 | 2 | Hero | `#hero` | Headline, CTA → prompt section, quick nav links |
 | 3 | Why | `#why` | Alon's personal story |
 | 4 | How-To | `#how` | 3-step guide for using the AI prompt |
@@ -157,9 +160,10 @@ jobs-repo/
 | 5c | — ATS Check | `#ats` | ATS explainer + Jobscan link |
 | 5d | — Want More? | `#more` | WhatsApp CTA card |
 | 6 | Services | `#services` | 3 coaching tiers with Google Sign-In CTAs |
-| 7 | Blog | `#blog` | 16 article cards |
-| 8 | Contact | `#contact` | Contact form + WhatsApp/Facebook/israelis.nl |
-| 9 | Footer | — | Community links + auto-updating copyright year |
+| 7 | Useful Links | `#links` | קישורים שימושיים — 4 categories: job search platforms, useful tools, industry news, headhunters & recruiters (~30 curated links) |
+| 8 | Blog | `#blog` | 16 article cards |
+| 9 | Contact | `#contact` | Contact form + WhatsApp/Facebook/israelis.nl |
+| 10 | Footer | — | Community links + auto-updating copyright year |
 
 ---
 
@@ -442,4 +446,5 @@ Configured in `render.yaml`:
 4. **No dynamic routes** — Each blog post requires both an HTML file and a route handler. A catch-all `[slug]/route.ts` could reduce boilerplate.
 5. **Inline JavaScript** — All JS is in `index.html`. Extracting to `public/` would improve cacheability and separation of concerns.
 6. **Analytics** — Umami Cloud analytics is installed on all pages via `<script defer src="https://cloud.umami.is/script.js" data-website-id="fe4e09f5-6b61-4820-8704-716ef86776b6"></script>`.
-7. **No sitemap or robots.txt** — Adding these would improve SEO discoverability.
+7. **Favicon** — Inline SVG favicon (blue gradient circle) embedded in all HTML `<head>` blocks via `<link rel="icon" href="data:image/svg+xml,...">`.
+8. **No sitemap or robots.txt** — Adding these would improve SEO discoverability.
