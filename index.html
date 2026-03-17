@@ -2,6 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="fe4e09f5-6b61-4820-8704-716ef86776b6"></script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='g' cx='35%25' cy='35%25'><stop offset='0%25' stop-color='%234f8af7'/><stop offset='100%25' stop-color='%232563EB'/></radialGradient></defs><circle cx='50' cy='50' r='48' fill='url(%23g)'/></svg>" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>עבודה בהולנד לישראלים | israelis.nl jobs</title>
@@ -480,10 +481,68 @@
       color: var(--brown-lt);
     }
 
+    /* ── Links section ── */
+    .links-category { margin-top: 40px; }
+    .links-category:first-child { margin-top: 32px; }
+    .links-cat-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 6px;
+    }
+    .links-cat-subtitle {
+      font-size: 0.9rem;
+      color: var(--brown-mid);
+      margin-bottom: 18px;
+    }
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 14px;
+    }
+    .link-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .link-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26,58,92,0.08);
+      border-color: var(--blue);
+      text-decoration: none;
+    }
+    .link-card-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .link-card-body h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin: 0 0 4px;
+      line-height: 1.4;
+    }
+    .link-card-body p {
+      font-size: 0.82rem;
+      color: var(--brown-mid);
+      margin: 0;
+      line-height: 1.55;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 700px) {
       .contact-wrap { grid-template-columns: 1fr; gap: 28px; }
       .blog-grid { grid-template-columns: 1fr; }
+      .links-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       section { padding: 48px 0; }
@@ -657,6 +716,7 @@
       <li><a href="/prompts" onclick="closeNav()">פרומפטים</a></li>
       <li><a href="#services" onclick="closeNav()">ליווי אישי</a></li>
       <li><a href="/blog" onclick="closeNav()">מאמרים</a></li>
+      <li><a href="#links" onclick="closeNav()">לינקים</a></li>
       <li><a href="#contact" onclick="closeNav()">צרו קשר</a></li>
       <li><a href="/prompts/cv-upgrade#prompt-section" class="site-nav-cta" onclick="closeNav()">התחילו עכשיו</a></li>
     </ul>
@@ -872,6 +932,299 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1)"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
     </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     USEFUL LINKS — לינקים שימושיים
+══════════════════════════════════ -->
+<section id="links">
+  <div class="container">
+    <h2>לינקים שימושיים</h2>
+    <p>אוסף מקורות מאומתים למציאת עבודה, מחקר חברות, חדשות מהתעשייה והד-האנטרים מומלצים.</p>
+
+    <!-- ─── Job Sources ─── -->
+    <div class="links-category">
+      <h3 class="links-cat-title">🔍 מקורות למציאת עבודה</h3>
+      <p class="links-cat-subtitle">פלטפורמות לחיפוש חברות הייטק ומשרות בהולנד</p>
+      <div class="links-grid">
+
+        <a class="link-card" href="https://www.israelis.nl/product-page/רשימת-החברות-הישראליות" target="_blank" rel="noopener">
+          <div class="link-card-icon">🇮🇱</div>
+          <div class="link-card-body">
+            <h4>רשימת החברות הישראליות בהולנד</h4>
+            <p>קובץ מעודכן של עשרות חברות הייטק ישראליות שפועלות בהולנד, כולל תחומי פעילות ופרטי קשר.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.linkedin.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">💼</div>
+          <div class="link-card-body">
+            <h4>LinkedIn</h4>
+            <p>חיפוש חברות לפי מיקום, תחום וגודל, לצד אפשרות לראות מי פתוח לנטוורקינג או גיוס.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://nl.indeed.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🔎</div>
+          <div class="link-card-body">
+            <h4>Indeed Netherlands</h4>
+            <p>אלפי משרות, כולל הייטק. ביקורות עובדים והשוואת תנאים, שכר ותחומי עיסוק.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.glassdoor.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🪟</div>
+          <div class="link-card-body">
+            <h4>Glassdoor</h4>
+            <p>תובנות פנימיות על חברות — שכר, תהליך ראיונות, שביעות רצון עובדים ותרבות ארגונית.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.crunchbase.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">📊</div>
+          <div class="link-card-body">
+            <h4>Crunchbase</h4>
+            <p>מאגר נתונים על סטארטאפים, משקיעים וסבבי גיוס. סינון לפי מדינה, שלב מימון ותחום.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://wellfound.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🚀</div>
+          <div class="link-card-body">
+            <h4>Wellfound (לשעבר AngelList)</h4>
+            <p>משרות בסטארטאפים לפי מיקום, שלב החברה, והעדפות שכר/אופציות.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.techleap.nl" target="_blank" rel="noopener">
+          <div class="link-card-icon">🇳🇱</div>
+          <div class="link-card-body">
+            <h4>Techleap.nl</h4>
+            <p>יוזמה ממשלתית שממפה את אקוסיסטם ההייטק ההולנדי, כולל סקיילאפים ונתוני צמיחה.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://hollandfintech.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">💳</div>
+          <div class="link-card-body">
+            <h4>Holland FinTech</h4>
+            <p>חברות פינטק בהולנד — רשימות, חדשות, אירועים וקשרים למשקיעים.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.startupamsterdam.org" target="_blank" rel="noopener">
+          <div class="link-card-icon">🏙️</div>
+          <div class="link-card-body">
+            <h4>StartupAmsterdam</h4>
+            <p>פרויקט עירוני של אמסטרדם — מפת סטארטאפים, יוזמות ליזמים ואירועים קהילתיים.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://dutchstartupdatabase.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🗂️</div>
+          <div class="link-card-body">
+            <h4>Dutch Startup Database</h4>
+            <p>מאגר סטארטאפים הולנדי עם חיפוש לפי תחום, אזור וגודל החברה.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.eu-startups.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🇪🇺</div>
+          <div class="link-card-body">
+            <h4>EU Startups</h4>
+            <p>חדשות, משרות ואירועים לסטארטאפים באירופה, כולל קטגוריות ייעודיות להולנד.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://remoteok.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🏠</div>
+          <div class="link-card-body">
+            <h4>Remote OK</h4>
+            <p>משרות מרחוק בחברות הולנדיות שמציעות עבודה היברידית או רילוקיישן.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ─── Useful Tools ─── -->
+    <div class="links-category">
+      <h3 class="links-cat-title">🧰 כלים שימושיים</h3>
+      <div class="links-grid">
+
+        <a class="link-card" href="https://thetax.nl" target="_blank" rel="noopener">
+          <div class="link-card-icon">🧮</div>
+          <div class="link-card-body">
+            <h4>מחשבון מס הולנדי</h4>
+            <p>חישוב שכר נטו בהתאם לברוטו, גיל, אחוז משרה וה-30% ruling.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://drive.google.com/file/d/1RxSncT9LPl3Oc6JcX0p6M9Ac0SF1riI0/view" target="_blank" rel="noopener">
+          <div class="link-card-icon">📈</div>
+          <div class="link-card-body">
+            <h4>דו״ח שכר בהייטק 2023/2024</h4>
+            <p>סקר שכר מקיף — טווחי שכר לפי תפקיד וניסיון, מגמות תעסוקה, ניתוח לפי מגדר וגודל חברה.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ─── News ─── -->
+    <div class="links-category">
+      <h3 class="links-cat-title">📰 חדשות מהתעשייה בהולנד</h3>
+      <div class="links-grid">
+
+        <a class="link-card" href="https://mtsprout.nl" target="_blank" rel="noopener">
+          <div class="link-card-icon">🌱</div>
+          <div class="link-card-body">
+            <h4>Sprout</h4>
+            <p>חדשות על סטארטאפים, סקייל-אפים ותעשיית הטכנולוגיה ההולנדית.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://siliconcanals.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🖥️</div>
+          <div class="link-card-body">
+            <h4>Silicon Canals</h4>
+            <p>חדשות טכנולוגיה מהולנד והאיזור.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.dutchnews.nl/category/tech" target="_blank" rel="noopener">
+          <div class="link-card-icon">📻</div>
+          <div class="link-card-body">
+            <h4>DutchNews.nl — Tech</h4>
+            <p>סקירה ממצה של חדשות הטכנולוגיה בהולנד.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://thenextweb.com/about" target="_blank" rel="noopener">
+          <div class="link-card-icon">🌍</div>
+          <div class="link-card-body">
+            <h4>The Next Web</h4>
+            <p>אגרגטור כנסים טכנולוגיים ויזמות בהולנד.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.emerce.nl" target="_blank" rel="noopener">
+          <div class="link-card-icon">📱</div>
+          <div class="link-card-body">
+            <h4>Emerce</h4>
+            <p>טכנולוגיה, תקשורת ומרקטינג בהולנד.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://hollandfintech.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">💳</div>
+          <div class="link-card-body">
+            <h4>Holland FinTech</h4>
+            <p>הכל על תעשיית הפינטק ההולנדית.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://sustainableamsterdam.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🌿</div>
+          <div class="link-card-body">
+            <h4>Sustainable Amsterdam</h4>
+            <p>יוזמות ומיזמים בעולם ה-climate tech והקיימות.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ─── Headhunters ─── -->
+    <div class="links-category">
+      <h3 class="links-cat-title">🎯 הד-האנטרים וחברות השמה</h3>
+      <div class="links-grid">
+
+        <a class="link-card" href="https://www.huxley.com/nl-nl" target="_blank" rel="noopener">
+          <div class="link-card-icon">🏦</div>
+          <div class="link-card-body">
+            <h4>Huxley</h4>
+            <p>בנקאות, פיננסים, הנדסה, IT וטכנולוגיה — נוכחות בינלאומית.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.spilberg.nl/en" target="_blank" rel="noopener">
+          <div class="link-card-icon">💻</div>
+          <div class="link-card-body">
+            <h4>Spilberg IT Development</h4>
+            <p>מתמקדת בתפקידי IT וטכנולוגיה.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.yer.nl" target="_blank" rel="noopener">
+          <div class="link-card-icon">🔧</div>
+          <div class="link-card-body">
+            <h4>YER Technology</h4>
+            <p>גיוס במגזרי טכנולוגיה שונים, עם ניסיון בינלאומי.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.michaelpage.nl/en" target="_blank" rel="noopener">
+          <div class="link-card-icon">🌐</div>
+          <div class="link-card-body">
+            <h4>Michael Page — IT & Tech</h4>
+            <p>גיוס בינלאומי לתפקידי טכנולוגיה.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://bluelynx.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🔵</div>
+          <div class="link-card-body">
+            <h4>Blue Lynx</h4>
+            <p>תמיכה בחיפוש עבודה וגם ברילוקיישן.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.thatrecruitmentcompany.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">⚡</div>
+          <div class="link-card-body">
+            <h4>That Recruitment Company</h4>
+            <p>חברת בוטיק עם צוות אנרגטי ומיומן.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://www.thebigsearch.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🔝</div>
+          <div class="link-card-body">
+            <h4>The Big Search</h4>
+            <p>גיוס בכירים בתחום הטכנולוגיה.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://topofminds.com/en/industry/product" target="_blank" rel="noopener">
+          <div class="link-card-icon">🧠</div>
+          <div class="link-card-body">
+            <h4>Top of Minds</h4>
+            <p>גיוס לתפקידי ניהול מוצר ותפקידים בכירים.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://careeropeners.nl" target="_blank" rel="noopener">
+          <div class="link-card-icon">🚪</div>
+          <div class="link-card-body">
+            <h4>Career Openers</h4>
+            <p>גיוס לתפקידי ניהול בכירים.</p>
+          </div>
+        </a>
+
+        <a class="link-card" href="https://nl.indeed.com" target="_blank" rel="noopener">
+          <div class="link-card-icon">🔎</div>
+          <div class="link-card-body">
+            <h4>Indeed.nl</h4>
+            <p>לוח דרושים כוללני.</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
