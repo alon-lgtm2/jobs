@@ -441,5 +441,5 @@ Configured in `render.yaml`:
 3. **No templating** — Blog/prompt pages are hand-authored HTML. A markdown → HTML pipeline or CMS integration would help if content volume grows significantly.
 4. **No dynamic routes** — Each blog post requires both an HTML file and a route handler. A catch-all `[slug]/route.ts` could reduce boilerplate.
 5. **Inline JavaScript** — All JS is in `index.html`. Extracting to `public/` would improve cacheability and separation of concerns.
-6. **No analytics** — No Google Analytics, Plausible, or similar tracking is currently installed.
+6. **Analytics** — Umami Cloud analytics is installed on all pages via `<script defer src="https://cloud.umami.is/script.js" data-website-id="fe4e09f5-6b61-4820-8704-716ef86776b6"></script>`.
 7. **No sitemap or robots.txt** — Adding these would improve SEO discoverability.
