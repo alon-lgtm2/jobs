@@ -5,11 +5,17 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='g' cx='35%25' cy='35%25'><stop offset='0%25' stop-color='%234f8af7'/><stop offset='100%25' stop-color='%232563EB'/></radialGradient></defs><circle cx='50' cy='50' r='48' fill='url(%23g)'/></svg>" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>עבודה בהולנד לישראלים | israelis.nl jobs</title>
-  <meta name="description" content="הפלטפורמה של הישראלים בהולנד לחיפוש עבודה. כלי AI חינמיים, מאמרים מעשיים וליווי אישי מנוסה." />
-  <meta property="og:title" content="עבודה בהולנד לישראלים | israelis.nl jobs" />
-  <meta property="og:description" content="הפלטפורמה של הישראלים בהולנד לחיפוש עבודה. כלי AI חינמיים, מאמרים מעשיים וליווי אישי מנוסה." />
+  <title>עבודה בהולנד לישראלים | פרסמו משרה חינם | israelis.nl jobs</title>
+  <meta name="description" content="הפלטפורמה של הישראלים בהולנד. פרסמו משרות בחינם, חפשו עבודה עם כלי AI, מאמרים מעשיים וליווי אישי." />
+  <meta property="og:title" content="עבודה בהולנד לישראלים | פרסמו משרה חינם | israelis.nl jobs" />
+  <meta property="og:description" content="הפלטפורמה של הישראלים בהולנד. פרסמו משרות בחינם, חפשו עבודה עם כלי AI, מאמרים מעשיים וליווי אישי." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jobs.israelis.nl" />
+  <meta property="og:site_name" content="jobs.israelis.nl" />
+  <meta property="og:locale" content="he_IL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="עבודה בהולנד לישראלים | פרסמו משרה חינם" />
+  <meta name="twitter:description" content="הפלטפורמה של הישראלים בהולנד. פרסמו משרות בחינם, חפשו עבודה עם כלי AI, מאמרים מעשיים וליווי אישי." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -538,9 +544,107 @@
       line-height: 1.55;
     }
 
+    /* ── Post Job Section ── */
+    #post-job {
+      background: linear-gradient(160deg, #f0f6ff 0%, #ffffff 60%);
+    }
+    #post-job .container {
+      max-width: 960px;
+    }
+    .post-job-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .post-job-info h2 { margin-bottom: 16px; }
+    .post-job-info p { font-size: 1.02rem; line-height: 1.8; }
+    .post-job-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .post-job-perks li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--brown);
+      line-height: 1.55;
+    }
+    .post-job-perks li .perk-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.15rem;
+      background: var(--blue-lt);
+    }
+    .job-form-card {
+      background: var(--white);
+      border: 2px solid var(--blue);
+      border-radius: 16px;
+      padding: 36px 32px;
+      box-shadow: 0 8px 32px rgba(37,99,235,0.1);
+    }
+    .job-form-card h3 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 1.2rem;
+    }
+    .job-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .job-form-card .form-group { margin-bottom: 16px; }
+    .job-form-card .form-group:last-of-type { margin-bottom: 24px; }
+    .job-form-card select {
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.95rem;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      background: var(--white);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      direction: rtl;
+      width: 100%;
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: left 14px center;
+    }
+    .job-form-card select:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .job-form-success {
+      display: none;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      color: #16a34a;
+      font-weight: 600;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 700px) {
       .contact-wrap { grid-template-columns: 1fr; gap: 28px; }
+      .post-job-wrap { grid-template-columns: 1fr; gap: 28px; }
+      .job-form-row { grid-template-columns: 1fr; gap: 0; }
+      .job-form-card { padding: 28px 20px; }
       .blog-grid { grid-template-columns: 1fr; }
       .links-grid { grid-template-columns: 1fr; }
     }
@@ -718,7 +822,7 @@
       <li><a href="/blog" onclick="closeNav()">מאמרים</a></li>
       <li><a href="#links" onclick="closeNav()">קישורים שימושיים</a></li>
       <li><a href="#contact" onclick="closeNav()">צרו קשר</a></li>
-      <li><a href="/prompts/cv-upgrade#prompt-section" class="site-nav-cta" onclick="closeNav()">התחילו עכשיו</a></li>
+      <li><a href="#post-job" class="site-nav-cta" onclick="closeNav()">📋 פרסמו משרה</a></li>
     </ul>
   </div>
 </nav>
@@ -729,9 +833,9 @@
 <section id="hero">
   <div class="container">
     <div class="hero-badge">🇮🇱 → 🇳🇱 &nbsp;מוצאים עבודה בהולנד</div>
-    <h1>חיפוש עבודה בהולנד —<br>כלים, ידע וליווי</h1>
+    <h1>חיפוש עבודה בהולנד -<br>כלים, ידע וליווי</h1>
     <p class="subtitle">
-      הפלטפורמה של הישראלים בהולנד. כלי AI חינמיים, מאמרים מעשיים וליווי אישי מנוסה — כל מה שצריך כדי להצליח בשוק העבודה ההולנדי.
+      הפלטפורמה של הישראלים בהולנד. כלי AI חינמיים, מאמרים מעשיים וליווי אישי מנוסה - כל מה שצריך כדי להצליח בשוק העבודה ההולנדי.
     </p>
     <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom: 8px;">
       <a href="/prompts" style="font-size:0.85rem; color:var(--muted);">כלי AI</a>
@@ -742,7 +846,10 @@
       <span style="color:var(--border);">|</span>
       <a href="#contact" style="font-size:0.85rem; color:var(--muted);">צרו קשר</a>
     </div>
-    <a href="/prompts" class="btn btn-primary">
+    <a href="#post-job" class="btn btn-primary" style="font-size:1.1rem; padding:16px 36px;">
+      📋 פרסמו משרה חינם
+    </a>
+    <a href="/prompts" class="btn btn-outline" style="margin-right:12px;">
       גלו את הכלים שלנו
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1)"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
@@ -753,7 +860,117 @@
 
 
 <!-- ══════════════════════════════════
-     SERVICES — ליווי אישי
+     POST A JOB - פרסמו משרה
+══════════════════════════════════ -->
+<section id="post-job">
+  <div class="container" style="max-width:960px;">
+    <div class="post-job-wrap">
+
+      <!-- Left: info -->
+      <div class="post-job-info">
+        <div class="hero-badge" style="margin-bottom:16px;">🆓 חינם לחלוטין</div>
+        <h2>פרסמו משרה בהולנד</h2>
+        <p>
+          מחפשים כישרון ישראלי בהולנד? פרסמו את המשרה שלכם כאן - בחינם -
+          והגיעו לקהילת אלפי ישראלים שמחפשים עבודה בהולנד.
+        </p>
+        <ul class="post-job-perks">
+          <li>
+            <div class="perk-icon">🎯</div>
+            <span>חשיפה ממוקדת לקהילת ישראלים בהולנד</span>
+          </li>
+          <li>
+            <div class="perk-icon">⚡</div>
+            <span>פרסום מהיר - המשרה עולה תוך 24 שעות</span>
+          </li>
+          <li>
+            <div class="perk-icon">🌍</div>
+            <span>מועמדים דוברי עברית ואנגלית עם ניסיון בינלאומי</span>
+          </li>
+          <li>
+            <div class="perk-icon">💬</div>
+            <span>שיתוף אוטומטי בקהילת הפייסבוק והוואטסאפ</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right: form -->
+      <div class="job-form-card">
+        <h3>📋 פרטי המשרה</h3>
+        <form id="jobForm" onsubmit="handleJobFormSubmit(event)">
+          <div class="job-form-row">
+            <div class="form-group">
+              <label for="job-company">שם החברה *</label>
+              <input type="text" id="job-company" name="company" placeholder="לדוגמה: Booking.com" required />
+            </div>
+            <div class="form-group">
+              <label for="job-title">שם המשרה *</label>
+              <input type="text" id="job-title" name="job_title" placeholder="לדוגמה: Senior Backend Engineer" dir="ltr" required />
+            </div>
+          </div>
+
+          <div class="job-form-row">
+            <div class="form-group">
+              <label for="job-location">מיקום *</label>
+              <input type="text" id="job-location" name="location" placeholder="לדוגמה: אמסטרדם / היברידי" required />
+            </div>
+            <div class="form-group">
+              <label for="job-type">סוג משרה *</label>
+              <select id="job-type" name="job_type" required>
+                <option value="" disabled selected>בחרו סוג</option>
+                <option value="full-time">משרה מלאה</option>
+                <option value="part-time">משרה חלקית</option>
+                <option value="contract">חוזה / פרילנס</option>
+                <option value="internship">סטאז׳</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="job-desc">תיאור המשרה *</label>
+            <textarea id="job-desc" name="description" placeholder="תארו את התפקיד, דרישות, יתרונות, וכל מה שחשוב למועמדים..." required style="min-height:130px;"></textarea>
+          </div>
+
+          <div class="job-form-row">
+            <div class="form-group">
+              <label for="job-email">אימייל ליצירת קשר *</label>
+              <input type="email" id="job-email" name="contact_email" placeholder="hr@company.com" dir="ltr" required />
+            </div>
+            <div class="form-group">
+              <label for="job-url">קישור למשרה / אתר החברה</label>
+              <input type="url" id="job-url" name="job_url" placeholder="https://..." dir="ltr" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="job-salary">טווח שכר (אופציונלי)</label>
+            <input type="text" id="job-salary" name="salary" placeholder="לדוגמה: €60,000 – €80,000 / שנה" dir="ltr" />
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:400; font-size:0.88rem; color:var(--brown-mid);">
+              <input type="checkbox" name="visa_sponsorship" value="yes" style="width:18px; height:18px; accent-color:var(--blue); cursor:pointer;" />
+              החברה מעניקה חסות ויזה (visa sponsorship)
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="jobSubmitBtn" style="width:100%; justify-content:center; margin-top:24px; font-size:1.05rem;">
+            📤 שלחו את המשרה
+          </button>
+        </form>
+        <div class="job-form-success" id="jobFormSuccess">
+          ✅ המשרה התקבלה בהצלחה!<br>
+          <span style="font-weight:400; font-size:0.92rem; color:var(--brown-mid);">נבדוק ונפרסם אותה תוך 24 שעות. תודה!</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
+     SERVICES - ליווי אישי
 ══════════════════════════════════ -->
 <section id="services">
   <div class="container">
@@ -762,7 +979,7 @@
       <p>
         הייטקיסטים ישראלים רבים שמחפשים עבודה בהולנד נתקלים בקשיים שלא נתקלו בהם בישראל.
         הקשרים האישיים כמעט ולא קיימים, ושיטות הפניה הישראליות לא תמיד עובדות פה.
-        לכן בנינו מכלול של חבילות ליווי — כדי שתוכלו לעבור גם את המשוכה הזאת.
+        לכן בנינו מכלול של חבילות ליווי - כדי שתוכלו לעבור גם את המשוכה הזאת.
       </p>
     </div>
 
@@ -773,11 +990,11 @@
         <div class="package-icon">🛠️</div>
         <h3>מפשילים שרוולים</h3>
         <p class="package-desc">
-          כל הכלים להתחיל לחפש עבודה בהולנד בצורה חכמה ומדויקת — מתאים למי שאוהב לעבוד Hands-on וצריך רק את הכיוון הנכון.
+          כל הכלים להתחיל לחפש עבודה בהולנד בצורה חכמה ומדויקת - מתאים למי שאוהב לעבוד Hands-on וצריך רק את הכיוון הנכון.
         </p>
         <ul class="package-features">
           <li>גישה מיידית להקלטה של הוובינר "מוצאים עבודה בהולנד"</li>
-          <li>3 חודשי שימוש באפליקציית "7 ביום" — שיטה מוכחת לניהול חיפוש</li>
+          <li>3 חודשי שימוש באפליקציית "7 ביום" - שיטה מוכחת לניהול חיפוש</li>
           <li>שימוש ב-AI לאיתור חברות רלוונטיות (לא רק משרות פתוחות)</li>
           <li>מעקב מסודר אחרי פניות, ראיונות והזדמנויות</li>
           <li>כל הסכום מתקזז בשדרוג לחבילה גבוהה יותר</li>
@@ -817,7 +1034,7 @@
         <div class="package-icon">🚀</div>
         <h3>מוצאים עבודה!</h3>
         <p class="package-desc">
-          ליווי מקיף למשך 3 חודשים — עם זמינות בלתי מוגבלת ותמיכה מלאה בכל שלב בדרך, עד שתיכנס לתפקיד החדש.
+          ליווי מקיף למשך 3 חודשים - עם זמינות בלתי מוגבלת ותמיכה מלאה בכל שלב בדרך, עד שתיכנס לתפקיד החדש.
         </p>
         <ul class="package-features">
           <li>כל מה שבחבילת "צוללים למים" ובנוסף:</li>
@@ -861,8 +1078,8 @@
         </div>
         <div class="blog-card-body">
           <span class="blog-card-tag">קורות חיים / אסטרטגיה</span>
-          <h3>תבנו את הקו"ח הכי טובים שיש. ואז — אל תשלחו אותם לשום מקום</h3>
-          <p>Spray &amp; Pray לא רק שאינה אפקטיבית — היא עלולה לחסום אתכם לגמרי. מה באמת עובד, ומה צריך להיות בקורות חיים שיחכו במגירה לרגע הנכון.</p>
+          <h3>תבנו את הקו"ח הכי טובים שיש. ואז - אל תשלחו אותם לשום מקום</h3>
+          <p>Spray &amp; Pray לא רק שאינה אפקטיבית - היא עלולה לחסום אתכם לגמרי. מה באמת עובד, ומה צריך להיות בקורות חיים שיחכו במגירה לרגע הנכון.</p>
           <div class="blog-card-footer">
             <span>מרץ 2026</span>
             <span class="blog-card-read">קראו עוד ←</span>
@@ -880,7 +1097,7 @@
         <div class="blog-card-body">
           <span class="blog-card-tag">אסטרטגיית חיפוש</span>
           <h3>הדרך הכי טובה למצוא היום עבודה היא להפסיק לחפש עבודה</h3>
-          <p>אחרי שמונה שנים שבמהלכן שוחחתי עם מאות ישראלים — אני יכול לומר בביטחון: מערכת ההפעלה שכולנו רגילים אליה קרסה לחלוטין.</p>
+          <p>אחרי שמונה שנים שבמהלכן שוחחתי עם מאות ישראלים - אני יכול לומר בביטחון: מערכת ההפעלה שכולנו רגילים אליה קרסה לחלוטין.</p>
           <div class="blog-card-footer">
             <span>פברואר 2025</span>
             <span class="blog-card-read">קראו עוד ←</span>
@@ -898,7 +1115,7 @@
         <div class="blog-card-body">
           <span class="blog-card-tag">משא ומתן על שכר</span>
           <h3>מה לענות כששואלים אותך על ציפיות שכר?</h3>
-          <p>התשובה שלי תמיד ברורה וחדה — שאלו בחזרה, בלי להתבלבל ובלי להתנצל: "כמה אתם משלמים?" טקטיקה שהוכיחה את עצמה שוב ושוב, גם בהולנד.</p>
+          <p>התשובה שלי תמיד ברורה וחדה - שאלו בחזרה, בלי להתבלבל ובלי להתנצל: "כמה אתם משלמים?" טקטיקה שהוכיחה את עצמה שוב ושוב, גם בהולנד.</p>
           <div class="blog-card-footer">
             <span>אוקטובר 2025</span>
             <span class="blog-card-read">קראו עוד ←</span>
@@ -915,7 +1132,7 @@
         </div>
         <div class="blog-card-body">
           <span class="blog-card-tag">רילוקיישן / עצות</span>
-          <h3>רילוקיישן להולנד — 10 טיפים לפני שעוברים</h3>
+          <h3>רילוקיישן להולנד - 10 טיפים לפני שעוברים</h3>
           <p>ארבע שנים בהולנד, מאות שיחות ייעוץ, ו-10 טיפים שלא תמצאו בשום מדריך גנרי. מ-LinkedIn ו-30% רולינג ועד ניתוק תושבות ושכירת דירה מרחוק.</p>
           <div class="blog-card-footer">
             <span>אוגוסט 2022</span>
@@ -937,7 +1154,7 @@
 
 
 <!-- ══════════════════════════════════
-     USEFUL LINKS — לינקים שימושיים
+     USEFUL LINKS - לינקים שימושיים
 ══════════════════════════════════ -->
 <section id="links">
   <div class="container">
@@ -978,7 +1195,7 @@
           <div class="link-card-icon">🪟</div>
           <div class="link-card-body">
             <h4>Glassdoor</h4>
-            <p>תובנות פנימיות על חברות — שכר, תהליך ראיונות, שביעות רצון עובדים ותרבות ארגונית.</p>
+            <p>תובנות פנימיות על חברות - שכר, תהליך ראיונות, שביעות רצון עובדים ותרבות ארגונית.</p>
           </div>
         </a>
 
@@ -1010,7 +1227,7 @@
           <div class="link-card-icon">💳</div>
           <div class="link-card-body">
             <h4>Holland FinTech</h4>
-            <p>חברות פינטק בהולנד — רשימות, חדשות, אירועים וקשרים למשקיעים.</p>
+            <p>חברות פינטק בהולנד - רשימות, חדשות, אירועים וקשרים למשקיעים.</p>
           </div>
         </a>
 
@@ -1018,7 +1235,7 @@
           <div class="link-card-icon">🏙️</div>
           <div class="link-card-body">
             <h4>StartupAmsterdam</h4>
-            <p>פרויקט עירוני של אמסטרדם — מפת סטארטאפים, יוזמות ליזמים ואירועים קהילתיים.</p>
+            <p>פרויקט עירוני של אמסטרדם - מפת סטארטאפים, יוזמות ליזמים ואירועים קהילתיים.</p>
           </div>
         </a>
 
@@ -1066,7 +1283,7 @@
           <div class="link-card-icon">📈</div>
           <div class="link-card-body">
             <h4>דו״ח שכר בהייטק 2023/2024</h4>
-            <p>סקר שכר מקיף — טווחי שכר לפי תפקיד וניסיון, מגמות תעסוקה, ניתוח לפי מגדר וגודל חברה.</p>
+            <p>סקר שכר מקיף - טווחי שכר לפי תפקיד וניסיון, מגמות תעסוקה, ניתוח לפי מגדר וגודל חברה.</p>
           </div>
         </a>
 
@@ -1097,7 +1314,7 @@
         <a class="link-card" href="https://www.dutchnews.nl/category/tech" target="_blank" rel="noopener">
           <div class="link-card-icon">📻</div>
           <div class="link-card-body">
-            <h4>DutchNews.nl — Tech</h4>
+            <h4>DutchNews.nl - Tech</h4>
             <p>סקירה ממצה של חדשות הטכנולוגיה בהולנד.</p>
           </div>
         </a>
@@ -1146,7 +1363,7 @@
           <div class="link-card-icon">🏦</div>
           <div class="link-card-body">
             <h4>Huxley</h4>
-            <p>בנקאות, פיננסים, הנדסה, IT וטכנולוגיה — נוכחות בינלאומית.</p>
+            <p>בנקאות, פיננסים, הנדסה, IT וטכנולוגיה - נוכחות בינלאומית.</p>
           </div>
         </a>
 
@@ -1169,7 +1386,7 @@
         <a class="link-card" href="https://www.michaelpage.nl/en" target="_blank" rel="noopener">
           <div class="link-card-icon">🌐</div>
           <div class="link-card-body">
-            <h4>Michael Page — IT & Tech</h4>
+            <h4>Michael Page - IT & Tech</h4>
             <p>גיוס בינלאומי לתפקידי טכנולוגיה.</p>
           </div>
         </a>
@@ -1246,7 +1463,7 @@
         <div class="contact-info-links">
           <a class="contact-link-item" href="https://wa.me/31644295691" target="_blank" rel="noopener">
             <div class="contact-link-icon" style="background:#f0fdf4;">💬</div>
-            <span>וואטסאפ — עדיף לתגובה מהירה</span>
+            <span>וואטסאפ - עדיף לתגובה מהירה</span>
           </a>
           <a class="contact-link-item" href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">
             <div class="contact-link-icon" style="background:#eff6ff;">👥</div>
@@ -1355,6 +1572,37 @@
     }
   }
 
+  // Job posting form submit
+  async function handleJobFormSubmit(e) {
+    e.preventDefault();
+    var form = document.getElementById('jobForm');
+    var btn  = document.getElementById('jobSubmitBtn');
+    var orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'שולח...';
+    try {
+      var fd = new FormData(form);
+      var data = { access_key: WEB3FORMS_KEY, subject: 'משרה חדשה: ' + fd.get('job_title') + ' - ' + fd.get('company') };
+      fd.forEach(function(v, k) { data[k] = v; });
+      data['visa_sponsorship'] = form.querySelector('[name="visa_sponsorship"]').checked ? 'כן' : 'לא';
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('jobFormSuccess').style.display = 'block';
+      } else {
+        throw new Error();
+      }
+    } catch {
+      btn.disabled = false;
+      btn.innerHTML = orig;
+      alert('שגיאה בשליחה. אפשר לפנות אלינו ישירות בוואטסאפ.');
+    }
+  }
+
   // ── Google Sign-In + Web3Forms leads ──────────────────────────────────
   // ⚙️  Replace these two values before going live:
   var GSI_CLIENT_ID   = '225623142977-oqtmjp8lr7kt3n2b53ftl37801391021.apps.googleusercontent.com';
@@ -1399,14 +1647,14 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject:    'ליד חדש: ' + (_pkg || 'לא ידוע') + ' — ' + user.name,
+          subject:    'ליד חדש: ' + (_pkg || 'לא ידוע') + ' - ' + user.name,
           from_name:  user.name,
           email:      user.email,
           'חבילה':   _pkg || 'לא ידוע',
           name:       user.name,
         })
       });
-    } catch(e) { /* fail silently — success message already shown */ }
+    } catch(e) { /* fail silently - success message already shown */ }
   }
 
   loadGsi().then(function() {
