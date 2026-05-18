@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--
+  ┌─────────────────────────────────────────────────┐
+  │  HOW TO PUBLISH A NEW ARTICLE                   │
+  │─────────────────────────────────────────────────│
+  │  1. Copy this file → blog/your-slug.html        │
+  │     (slug: lowercase, hyphens only, no spaces)  │
+  │  2. Replace every ← EDIT marker below           │
+  │  3. Save — the article is live at               │
+  │     /blog/your-slug                             │
+  │                                                 │
+  │  No route.ts needed. No build step.             │
+  │  The catch-all route handles it automatically.  │
+  └─────────────────────────────────────────────────┘
+-->
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ← EDIT: page title (shown in browser tab + Google) -->
+  <title>כותרת המאמר | jobs.israelis.nl</title>
+
+  <!-- ← EDIT: meta description (1–2 sentences, for Google) -->
+  <meta name="description" content="תיאור קצר של המאמר לגוגל.">
+
+  <!-- Open Graph (social sharing preview) — ← EDIT -->
+  <meta property="og:title" content="כותרת המאמר">
+  <meta property="og:description" content="תיאור קצר של המאמר לגוגל.">
+  <meta property="og:url" content="https://jobs.israelis.nl/blog/your-slug">
+  <meta property="og:type" content="article">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇱</text></svg>">
+  <link rel="stylesheet" href="/te.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="fe4e09f5-6b61-4820-8704-716ef86776b6"></script>
+  <style>
+    .article-layout { display:grid; grid-template-columns:1fr min(70ch,100%) 1fr; gap:0 2rem; padding-block:clamp(3rem,7vw,5.5rem); }
+    .article-layout > * { grid-column:2; }
+    .article-layout > .full-bleed { grid-column:1/-1; }
+    .article-header { margin-bottom:3rem; }
+    .article-meta { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+    .article-title { font-family:"Frank Ruhl Libre",Georgia,serif; font-size:clamp(1.9rem,5vw,3rem); font-weight:900; line-height:1.12; color:var(--cream); margin-bottom:1.25rem; }
+    .article-title em { font-style:italic; color:rgba(221,165,63,0.92); }
+    .article-lede { font-family:"David Libre",Georgia,serif; font-style:italic; font-size:1.2rem; line-height:1.65; color:var(--fg-2); border-right:2px solid rgba(221,165,63,0.4); padding-right:1.25rem; margin-bottom:2rem; }
+    .article-author { font-family:"David Libre",Georgia,serif; font-size:0.85rem; color:var(--fg-3); display:flex; align-items:center; gap:0.5rem; }
+    .article-author strong { color:var(--fg-2); font-weight:600; }
+    .article-cta { background:rgba(30,42,56,0.5); border:1px solid rgba(221,165,63,0.2); padding:1.75rem 2rem; margin-top:3rem; }
+    .article-cta-title { font-family:"Frank Ruhl Libre",Georgia,serif; font-size:1.15rem; font-weight:700; color:var(--cream); margin-bottom:0.5rem; }
+    .article-cta-body { font-family:"David Libre",Georgia,serif; font-size:0.9rem; color:var(--fg-2); line-height:1.65; margin-bottom:1.25rem; }
+    .related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+    @media(max-width:767px){ .related-grid{ grid-template-columns:1fr 1fr; } }
+    @media(max-width:499px){ .related-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="te-nav is-scrolled" id="site-nav">
+  <div class="te-container te-nav-inner">
+    <a href="/" class="te-nav-logo" aria-label="jobs.israelis.nl">
+      <span class="te-nav-mark">ij</span>
+      <span class="te-nav-wordmark">israelis<em>.nl</em>&thinsp;jobs</span>
+    </a>
+    <nav class="te-nav-links" id="nav-links">
+      <a href="/articles">מאמרים</a>
+      <a href="/library">ספרייה</a>
+      <a href="/coaching">ליווי</a>
+      <a href="/advisory">ייעוץ</a>
+      <a href="/prompts">כלי AI</a>
+      <a href="/contact" class="te-nav-cta">בואו נדבר</a>
+    </nav>
+    <button class="te-hamburger" id="hamburger" aria-label="תפריט">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+
+<!-- ARTICLE -->
+<main class="te-section-navy">
+  <div class="article-layout te-container">
+
+    <header class="article-header">
+      <div class="article-meta">
+        <!-- ← EDIT: tag and date -->
+        <span class="te-tag">קטגוריה · תת-קטגוריה</span>
+        <span style="font-family:'David Libre',Georgia,serif;font-size:0.8rem;color:var(--fg-4);letter-spacing:0.05em;">מאי 2026</span>
+      </div>
+
+      <!-- ← EDIT: article title (can include <em>emphasis</em> for gold italic) -->
+      <h1 class="article-title">
+        כותרת המאמר עם <em>הדגשה</em> זהב
+      </h1>
+
+      <!-- ← EDIT: 1–2 sentence intro / lede -->
+      <p class="article-lede">
+        משפט פתיחה שתופס את הקורא ומסכם את הרעיון המרכזי של המאמר — מה הקורא ייקח איתו.
+      </p>
+
+      <div class="article-author">
+        <span>by</span>
+        <strong>אלון גילדוני</strong>
+        <span>·</span>
+        <a href="https://israelis.nl" style="color:var(--accent-soft);">israelis.nl</a>
+      </div>
+    </header>
+
+
+    <!-- ═══════════════════════════════════
+      ARTICLE BODY — ← EDIT everything below
+      Use <h2> for sections, <h3> for sub-sections.
+      Use <strong> for bold, <em> for italic.
+      Use <blockquote> for pull quotes.
+      ═══════════════════════════════════ -->
+    <div class="te-prose">
+
+      <p>
+        פסקת פתיחה. כאן מתחיל הגוף של המאמר. כל פסקה היא רעיון אחד — קצרה, ממוקדת, ונגמרת בנקודה.
+      </p>
+
+      <h2>כותרת פרק ראשון</h2>
+
+      <p>
+        הסבר, דוגמה, או נקודת מבט. אפשר להשתמש ב-<strong>מודגש</strong> להדגשות חשובות ו-<em>נטוי</em> למונחים.
+      </p>
+
+      <blockquote>
+        ציטוט שמייצג נקודה מרכזית — משפט שהיה אומר אותו בשיחה.
+      </blockquote>
+
+      <p>
+        המשך ההסבר. אפשר לפרק לרשימה:
+      </p>
+
+      <ul>
+        <li>נקודה ראשונה</li>
+        <li>נקודה שנייה</li>
+        <li>נקודה שלישית</li>
+      </ul>
+
+      <h2>כותרת פרק שני</h2>
+
+      <p>
+        תוכן הפרק השני. הוסיפו פסקאות לפי הצורך.
+      </p>
+
+      <h3>כותרת משנה</h3>
+
+      <p>
+        פרט נוסף תחת הפרק השני.
+      </p>
+
+      <h2>סיכום</h2>
+
+      <p>
+        מה לקחים מרכזיים? מה הקורא צריך לעשות אחרת מעכשיו? משפט אחרון חד ובלתי נשכח.
+      </p>
+
+    </div>
+    <!-- END ARTICLE BODY -->
+
+
+    <!-- CTA -->
+    <div class="article-cta">
+      <div class="article-cta-title">רוצים ליווי אישי בחיפוש עבודה?</div>
+      <p class="article-cta-body">
+        אם המאמר הזה הדהד אצלכם — ייתכן שתיהנו מליווי אישי. בניתי שלושה מסלולים שמתאימים למצבים שונים.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+        <a href="/#services" class="te-btn te-btn-primary te-btn-sm">ראו את מסלולי הליווי</a>
+        <a href="https://wa.me/31644295691" target="_blank" rel="noopener" class="te-btn te-btn-ghost te-btn-sm">שאלה ב-WhatsApp</a>
+      </div>
+    </div>
+
+
+    <!-- RELATED ARTICLES — ← EDIT: swap in relevant slugs/titles -->
+    <div style="margin-top:3.5rem;">
+      <div class="te-eyebrow" style="margin-bottom:1.5rem;">
+        <span class="te-eyebrow-rule"></span>
+        <span class="te-eyebrow-label">מאמרים קשורים</span>
+      </div>
+      <div class="related-grid">
+
+        <a class="te-blog-card" href="/blog/job-search-strategy">
+          <div class="te-blog-thumb"><div class="te-blog-thumb-glyph">🏹</div></div>
+          <div class="te-blog-body">
+            <div class="te-blog-tag">אסטרטגיה</div>
+            <div class="te-blog-title">הדרך הכי טובה למצוא היום עבודה היא להפסיק לחפש עבודה</div>
+            <div class="te-blog-foot"><span class="te-blog-date">פברואר 2025</span><span class="te-blog-read">קריאה ←</span></div>
+          </div>
+        </a>
+
+        <a class="te-blog-card" href="/blog/salary-negotiation">
+          <div class="te-blog-thumb"><div class="te-blog-thumb-glyph">💰</div></div>
+          <div class="te-blog-body">
+            <div class="te-blog-tag">שכר</div>
+            <div class="te-blog-title">מה לענות כששואלים אותך על ציפיות שכר?</div>
+            <div class="te-blog-foot"><span class="te-blog-date">אוקטובר 2025</span><span class="te-blog-read">קריאה ←</span></div>
+          </div>
+        </a>
+
+        <a class="te-blog-card" href="/blog/cv-strategy">
+          <div class="te-blog-thumb"><div class="te-blog-thumb-glyph">🍾</div></div>
+          <div class="te-blog-body">
+            <div class="te-blog-tag">קו"ח</div>
+            <div class="te-blog-title">תבנו את הקו"ח הכי טובים שיש. ואז — אל תשלחו אותם לשום מקום</div>
+            <div class="te-blog-foot"><span class="te-blog-date">מרץ 2026</span><span class="te-blog-read">קריאה ←</span></div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </div><!-- end article-layout -->
+</main>
+
+
+<!-- FOOTER -->
+<footer class="te-footer">
+  <div class="te-container">
+    <div class="te-footer-inner">
+      <div class="te-footer-brand">
+        <div class="te-footer-wordmark">israelis<em>.nl</em>&thinsp;jobs</div>
+        <div class="te-footer-tagline">הפלטפורמה של הישראלים בהולנד.</div>
+      </div>
+      <div class="te-footer-links">
+        <a href="/articles">מאמרים</a>
+        <a href="/library">ספרייה</a>
+        <a href="/coaching">ליווי</a>
+        <a href="/advisory">ייעוץ</a>
+        <a href="/prompts">כלי AI</a>
+        <a href="/post-job">פרסום משרה</a>
+        <a href="https://techexpats.nl" target="_blank" rel="noopener">B2B · TechExpats.nl</a>
+        <a href="https://www.facebook.com/groups/1550032319015043/" target="_blank" rel="noopener">קהילה</a>
+        <a href="https://israelis.nl" target="_blank" rel="noopener">israelis.nl</a>
+      </div>
+    </div>
+    <div class="te-footer-bottom">
+      <p class="te-footer-copy">© <span id="year"></span> israelis.nl · הפלטפורמה של הישראלים בהולנד</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+(function(){
+  const nav = document.getElementById("site-nav");
+  const burger = document.getElementById("hamburger");
+  const links = document.getElementById("nav-links");
+  burger.addEventListener("click", function(){
+    const o = links.classList.toggle("is-open");
+    burger.classList.toggle("is-open", o);
+  });
+  document.addEventListener("click", function(e){
+    if (!nav.contains(e.target)){ links.classList.remove("is-open"); burger.classList.remove("is-open"); }
+  });
+})();
+</script>
+</body>
+</html>
